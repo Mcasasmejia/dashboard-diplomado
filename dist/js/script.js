@@ -197,3 +197,48 @@ function generateRandomData(n) {
     return data
 }
 // end: Chart
+
+// Función para mostrar el modal
+function openModal() {
+    document.getElementById('editModal').classList.remove('hidden');
+    
+  }
+  
+  // Función para ocultar el modal
+  function closeModal() {
+    document.getElementById('editModal').classList.add('hidden');
+  }
+  
+  // Asociar la función openModal al clic en el botón "Editar"
+  document.getElementById('editButton').addEventListener('click', openModal);
+
+
+  // Ver
+
+  // Función para mostrar el modal
+function openModal2() {
+    document.getElementById('verModal').classList.remove('hidden');
+  }
+  
+  // Función para ocultar el modal
+  function closeModal2() {
+    document.getElementById('verModal').classList.add('hidden');
+  }
+  
+  // Asociar la función openModal al clic en el botón "Editar"
+  document.getElementById('verButton').addEventListener('click', openModal2);
+
+  // Eliminar
+
+  // Función para mostrar el modal
+function openModal3() {
+    document.getElementById('eliminarModal').classList.remove('hidden');
+  }
+  
+  // Función para ocultar el modal
+  function closeModal3() {
+    document.getElementById('eliminarModal').classList.add('hidden');
+  }
+  
+  // Asociar la función openModal al clic en el botón "Editar"
+  document.getElementById('eliminarButton').addEventListener('click', openModal3);
