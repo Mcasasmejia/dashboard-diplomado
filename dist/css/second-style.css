@@ -1,0 +1,34 @@
+   /* Estilo personalizado para el campo de carga de archivos */
+   .custom-file-input {
+    background-color: red;
+    position: relative;
+    overflow: hidden;
+    background-color: #f3f4f6;
+    color: #666666;
+    border: 2px dashed #ccc;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+
+.custom-file-input input[type="file"] {
+    background-color: red;
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Estilo para las imágenes */
+.image-container {
+    display: flex;
+    overflow-x: auto;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    margin-right: 10px; /* Espacio entre imágenes */
+}

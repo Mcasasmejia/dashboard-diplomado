@@ -179,9 +179,9 @@ new Chart(document.getElementById('order-chart'), {
 
 function generateNDays(n) {
     const data = []
-    for(let i=0; i<n; i++) {
+    for (let i = 0; i < n; i++) {
         const date = new Date()
-        date.setDate(date.getDate()-i)
+        date.setDate(date.getDate() - i)
         data.push(date.toLocaleString('en-US', {
             month: 'short',
             day: 'numeric'
@@ -191,7 +191,7 @@ function generateNDays(n) {
 }
 function generateRandomData(n) {
     const data = []
-    for(let i=0; i<n; i++) {
+    for (let i = 0; i < n; i++) {
         data.push(Math.round(Math.random() * 10))
     }
     return data
@@ -201,44 +201,96 @@ function generateRandomData(n) {
 // Función para mostrar el modal
 function openModal() {
     document.getElementById('editModal').classList.remove('hidden');
-    
-  }
-  
-  // Función para ocultar el modal
-  function closeModal() {
+
+}
+
+// Función para ocultar el modal
+function closeModal() {
     document.getElementById('editModal').classList.add('hidden');
-  }
-  
-  // Asociar la función openModal al clic en el botón "Editar"
-  document.getElementById('editButton').addEventListener('click', openModal);
+}
+
+// Asociar la función openModal al clic en el botón "Editar"
+document.getElementById('editButton').addEventListener('click', openModal);
 
 
-  // Ver
+// Ver
 
-  // Función para mostrar el modal
+// Función para mostrar el modal
 function openModal2() {
     document.getElementById('verModal').classList.remove('hidden');
-  }
-  
-  // Función para ocultar el modal
-  function closeModal2() {
+}
+
+// Función para ocultar el modal
+function closeModal2() {
     document.getElementById('verModal').classList.add('hidden');
-  }
-  
-  // Asociar la función openModal al clic en el botón "Editar"
-  document.getElementById('verButton').addEventListener('click', openModal2);
+}
 
-  // Eliminar
+// Asociar la función openModal al clic en el botón "Editar"
+document.getElementById('verButton').addEventListener('click', openModal2);
 
-  // Función para mostrar el modal
+// Eliminar
+
+// Función para mostrar el modal
 function openModal3() {
     document.getElementById('eliminarModal').classList.remove('hidden');
-  }
-  
-  // Función para ocultar el modal
-  function closeModal3() {
+}
+
+// Función para ocultar el modal
+function closeModal3() {
     document.getElementById('eliminarModal').classList.add('hidden');
-  }
-  
-  // Asociar la función openModal al clic en el botón "Editar"
-  document.getElementById('eliminarButton').addEventListener('click', openModal3);
+}
+
+
+
+
+/// [openModalh] abre el modal de editar la habitacion
+function openModalh() {
+    document.getElementById('editHa').classList.remove('hidden');
+
+}
+
+/// [closeModalh] cierra  el modal de editar la habitacion
+function closeModalh() {
+    document.getElementById('editHa').classList.add('hidden');
+}
+
+
+/// [openModalh] abre el modal de crear la habitacion
+function openModalCh() {
+    document.getElementById('createRoomModal').classList.remove('hidden');
+
+}
+
+/// [closeModalh] cierra  el modal de crear la habitacion
+function closeModalCh() {
+    document.getElementById('createRoomModal').classList.add('hidden');
+}
+
+/// [openModalDh] abre el modal de eliminar la habitacion
+
+function openModalDh() {
+    document.getElementById('deleteModal').classList.remove('hidden');
+
+}
+
+/// [closeModalDh] cierra  el modal de eliminar la habitacion
+function closeModalDh() {
+    document.getElementById('deleteModal').classList.add('hidden');
+}
+
+
+
+
+const fileInput = document.getElementById("imagenes");
+const imageContainer = document.querySelector(".image-container");
+
+fileInput.addEventListener("change", function () {
+    imageContainer.innerHTML = ""; // Limpia el contenedor de imágenes
+
+    for (const file of this.files) {
+        const image = document.createElement("img");
+        image.src = URL.createObjectURL(file);
+        image.alt = file.name;
+        imageContainer.appendChild(image);
+    }
+});
