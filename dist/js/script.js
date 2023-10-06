@@ -130,14 +130,14 @@ document.querySelectorAll('[data-tab]').forEach(function (item) {
 
 
 
-// start: Chart
-new Chart(document.getElementById('order-chart'), {
+// start: graphic-ghab
+new Chart(document.getElementById('graphic-hab'), {
     type: 'line',
     data: {
         labels: generateNDays(7),
         datasets: [
             {
-                label: 'Active',
+                label: 'Estándar',
                 data: generateRandomData(7),
                 borderWidth: 1,
                 fill: true,
@@ -147,7 +147,7 @@ new Chart(document.getElementById('order-chart'), {
                 tension: .2
             },
             {
-                label: 'Completed',
+                label: 'Junior',
                 data: generateRandomData(7),
                 borderWidth: 1,
                 fill: true,
@@ -157,13 +157,70 @@ new Chart(document.getElementById('order-chart'), {
                 tension: .2
             },
             {
-                label: 'Canceled',
+                label: 'Suite',
                 data: generateRandomData(7),
                 borderWidth: 1,
                 fill: true,
                 pointBackgroundColor: 'rgb(244, 63, 94)',
                 borderColor: 'rgb(244, 63, 94)',
                 backgroundColor: 'rgb(244 63 94 / .05)',
+                tension: .2
+            },
+        ]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// start: graphic-ghab
+new Chart(document.getElementById('graphic-acom'), {
+    type: 'line',
+    data: {
+        labels: generateNDays(7),
+        datasets: [
+            {
+                label: 'Sencilla',
+                data: generateRandomData(7),
+                borderWidth: 1,
+                fill: true,
+                pointBackgroundColor: 'rgb(59, 130, 246)',
+                borderColor: 'rgb(59, 130, 246)',
+                backgroundColor: 'rgb(59 130 246 / .05)',
+                tension: .2
+            },
+            {
+                label: 'Doble',
+                data: generateRandomData(7),
+                borderWidth: 1,
+                fill: true,
+                pointBackgroundColor: 'rgb(16, 185, 129)',
+                borderColor: 'rgb(16, 185, 129)',
+                backgroundColor: 'rgb(16 185 129 / .05)',
+                tension: .2
+            },
+            {
+                label: 'Triple',
+                data: generateRandomData(7),
+                borderWidth: 1,
+                fill: true,
+                pointBackgroundColor: 'rgb(244, 63, 94)',
+                borderColor: 'rgb(244, 63, 94)',
+                backgroundColor: 'rgb(244 63 94 / .05)',
+                tension: .2
+            },
+            {
+                label: 'Cuádruple',
+                data: generateRandomData(7),
+                borderWidth: 1,
+                fill: true,
+                pointBackgroundColor: 'yellow',
+                borderColor: 'yellow',
+                backgroundColor: 'rgb(255 255 0 / .05)',
                 tension: .2
             },
         ]
@@ -198,16 +255,37 @@ function generateRandomData(n) {
 }
 // end: Chart
 
-// Función para mostrar el modal
-function openModal() {
-    document.getElementById('editModal').classList.remove('hidden');
-
+// Función para Crear Hotel
+function crearHotel() {
+    document.getElementById('crearHotel').classList.remove('hidden');
 }
 
-// Función para ocultar el modal
-function closeModal() {
-    document.getElementById('editModal').classList.add('hidden');
+// Función para cerrar el modal Crear Hotel
+function cerrarCrearModal() {
+    document.getElementById('crearHotel').classList.add('hidden');
 }
+
+// Función para Ver Hotel
+function verHotel() {
+    document.getElementById('verHotel').classList.remove('hidden');
+}
+
+// Función para Editar Hotel
+function editarHotel() {
+    document.getElementById('editarHotel').classList.remove('hidden');
+}
+
+// Función para cerrar el modal editar Hotel
+function cerrarEditarModal() {
+    document.getElementById('editarHotel').classList.add('hidden');
+}
+
+// Función para eliminar el modal
+function eliminarHotel() {
+    document.getElementById('eliminarHotel').classList.remove('hidden');
+}
+
+
 
 // Asociar la función openModal al clic en el botón "Editar"
 document.getElementById('editButton').addEventListener('click', openModal);
