@@ -260,15 +260,32 @@ function crearHotel() {
     document.getElementById('crearHotel').classList.remove('hidden');
 }
 
-// Función para Editar Hotel
-function openModal() {
-    document.getElementById('editModal').classList.remove('hidden');
+// Función para cerrar el modal Crear Hotel
+function cerrarCrearModal() {
+    document.getElementById('crearHotel').classList.add('hidden');
 }
 
-// Función para ocultar el modal
-function closeModal() {
-    document.getElementById('closeModal').classList.add('hidden');
+// Función para Ver Hotel
+function verHotel() {
+    document.getElementById('verHotel').classList.remove('hidden');
 }
+
+// Función para Editar Hotel
+function editarHotel() {
+    document.getElementById('editarHotel').classList.remove('hidden');
+}
+
+// Función para cerrar el modal editar Hotel
+function cerrarEditarModal() {
+    document.getElementById('editarHotel').classList.add('hidden');
+}
+
+// Función para eliminar el modal
+function eliminarHotel() {
+    document.getElementById('eliminarHotel').classList.remove('hidden');
+}
+
+
 
 // Asociar la función openModal al clic en el botón "Editar"
 document.getElementById('editButton').addEventListener('click', openModal);
