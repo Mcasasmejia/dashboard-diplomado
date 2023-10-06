@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="dist/css/style.css">
-
+    <link rel="stylesheet" href="/dist/css/style.css">
     <title>Dashboard</title>
 </head>
 
@@ -19,22 +18,22 @@
             <span class="text-lg font-bold text-white ml-3">Las Casas</span>
         </a>
         <ul class="mt-4">
-            <li class="mb-1 group active">
-                <a href="./"
+            <li class="mb-1 group">
+                <a href="/index.html"
                     class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class="ri-home-2-line mr-3 text-lg"></i>
                     <span class="text-sm">Dashboard</span>
                 </a>
             </li>
             <li class="mb-1 group">
-                <a href="./src/pages/hoteles.html"
-                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                <a href="hoteles.html"
+                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 sidebar-dropdown-toggle">
                     <i class="ri-hotel-line mr-3 text-lg"></i>
                     <span class="text-sm">Hoteles</span>
                 </a>
             </li>
             <li class="mb-1 group">
-                <a
+                <a href="habitaciones.html"
                     class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 sidebar-dropdown-toggle">
                     <i class="ri-hotel-bed-line mr-3 text-lg"></i>
                     <span class="text-sm">Habitaciones</span>
@@ -47,24 +46,29 @@
                             <li style="margin-top: 10px;">
                                 <label>
                                     <input type="checkbox" name="opcion1">
-                                    <span style="color: white; margin-left: 10px;">Estandar</span>
+                                    <span style="color: white; margin-left: 10px;">Sencilla</span>
                                 </label>
                             </li>
                             <li style="margin-top: 10px;">
                                 <label>
                                     <input type="checkbox" name="opcion2">
-                                    <span style="color: white; margin-left: 10px;">Junior</span>
+                                    <span style="color: white; margin-left: 10px;">Doble</span>
                                 </label>
                             </li>
                             <li style="margin-top: 10px;">
                                 <label>
                                     <input type="checkbox" name="opcion3">
-                                    <span style="color: white; margin-left: 10px;">Suite</span>
+                                    <span style="color: white; margin-left: 10px;">Triple</span>
+                                </label>
+                            </li>
+                            <li style="margin-top: 10px;">
+                                <label>
+                                    <input type="checkbox" name="opcion3">
+                                    <span style="color: white; margin-left: 10px;">Cuádruple</span>
                                 </label>
                             </li>
                         </ul>
                     </li>
-
                     <li class="mb-4">
                         <a class="text-white text-sm flex items-center hover:text-gray-100 mt-4">Acomodación</a>
                         <ul style="list-style: none; padding-left: 20px;">
@@ -88,7 +92,7 @@
                             </li>
                             <li style="margin-top: 10px;">
                                 <label>
-                                    <input type="checkbox" name="opcion3">
+                                    <input type="checkbox" name="opcion4">
                                     <span style="color: white; margin-left: 10px;">Cuadruple</span>
                                 </label>
                             </li>
@@ -96,10 +100,9 @@
                     </li>
                     <div class="flex items-center justify-center">
                         <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                            <a href="src/pages/habitaciones.html">Buscar</a>
+                            <a href="../pages/habitaciones.html">Buscar</a>
                         </button>
-                      </div>
-                      
+                    </div>
                 </ul>
             </li>
             <li class="mb-1 group active">
@@ -110,13 +113,14 @@
                 </a>
                 <ul class="pl-7 mt-2 hidden group-[.selected]:block">
                     <li class="mb-4">
-                        <a href="src/pages/informes_hab.html" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Gráficos Habitaciones</a>
+                        <a href="informes_hab.html" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Gráficos Habitaciones</a>
                     </li> 
                     <li class="mb-4">
-                        <a href="src/pages/informes_acom.html" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Gráficos Acomodaciones</a>
+                        <a href="informes_acom.html" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Gráficos Acomodaciones</a>
                     </li> 
                 </ul>
             </li>
+            
         </ul>
     </div>
     <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
@@ -134,8 +138,8 @@
                 <li class="mr-2">
                     <a href="#" class="text-gray-400 hover:text-gray-600 font-medium">Dashboard</a>
                 </li>
-                <li class="text-gray-600 mr-2 font-medium">/</li>
-                <li class="text-gray-600 mr-2 font-medium">Analisis</li>
+                <li class="hover:text-gray-600 mr-2 font-medium">/</li>
+                <li class="text-gray-600 mr-2 font-medium">Informes Acomodaciones</li>
             </ul>
             <ul class="ml-auto flex items-center">
                 <li class="dropdown ml-1">
@@ -156,13 +160,81 @@
                     </ul>
                 </li>
             </ul>
-        </div>
-
-        <div>
 
         </div>
 
-
+        <div class="p-6">
+            <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
+                <div class="flex justify-between mb-6">
+                    <div class="">
+                        <h2 class="text-base font-semibold leading-7 text-gray-900">Informes Acomodaciones</h2>
+                        <p class="mt-1 text-sm leading-6 text-gray-600">Esta información se mostrará públicamente, así
+                            que tenga cuidado con lo que comparte.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="p-6">
+    <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+            <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
+                <div class="flex justify-between mb-4 items-start">
+                    <div class="font-medium">Gráficos</div>
+                    <div class="dropdown">
+                        <button type="button" class="dropdown-toggle text-gray-400 hover:text-gray-600"><i class="ri-more-fill"></i></button>
+                        <ul class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
+                            <li>
+                                <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Sencilla</a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Doble</a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Triple</a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Cuadruple</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                    <div class="rounded-md border border-dashed border-gray-200 p-4">
+                        <div class="flex items-center mb-0.5">
+                            <div class="text-xl font-semibold">10</div>
+                            <span class="p-1 rounded text-[12px] font-semibold bg-blue-500/10 text-blue-500 leading-none ml-1">Sencilla</span>
+                        </div>
+                        <span class="text-gray-400 text-sm">Sencilla</span>
+                    </div>
+                    <div class="rounded-md border border-dashed border-gray-200 p-4">
+                        <div class="flex items-center mb-0.5">
+                            <div class="text-xl font-semibold">50</div>
+                            <span class="p-1 rounded text-[12px] font-semibold bg-emerald-500/10 text-emerald-500 leading-none ml-1">Doble</span>
+                        </div>
+                        <span class="text-gray-400 text-sm">Doble</span>
+                    </div>
+                    <div class="rounded-md border border-dashed border-gray-200 p-4">
+                        <div class="flex items-center mb-0.5">
+                            <div class="text-xl font-semibold">4</div>
+                            <span class="p-1 rounded text-[12px] font-semibold bg-rose-500/10 text-rose-500 leading-none ml-1">Triple</span>
+                        </div>
+                        <span class="text-gray-400 text-sm">Triple</span>
+                    </div>
+                    <div class="rounded-md border border-dashed border-gray-200 p-4">
+                        <div class="flex items-center mb-0.5">
+                            <div class="text-xl font-semibold">4</div>
+                            <span class="p-1 rounded text-[12px] font-semibold bg-yellow-500/10 text-yellow-500 leading-none ml-1">Cuadruple</span>
+                        </div>
+                        <span class="text-gray-400 text-sm">Cuadruple</span>
+                    </div>
+                </div>
+                <div>
+                    <canvas id="graphic-acom"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 
     </main>
     <!-- end: Main -->
@@ -174,7 +246,7 @@
 
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="dist/js/script.js"></script>
+    <script src="/dist/js/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 </body>
 

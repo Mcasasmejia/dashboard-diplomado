@@ -130,14 +130,14 @@ document.querySelectorAll('[data-tab]').forEach(function (item) {
 
 
 
-// start: Chart
-new Chart(document.getElementById('order-chart'), {
+// start: graphic-ghab
+new Chart(document.getElementById('graphic-hab'), {
     type: 'line',
     data: {
         labels: generateNDays(7),
         datasets: [
             {
-                label: 'Active',
+                label: 'Estándar',
                 data: generateRandomData(7),
                 borderWidth: 1,
                 fill: true,
@@ -147,7 +147,7 @@ new Chart(document.getElementById('order-chart'), {
                 tension: .2
             },
             {
-                label: 'Completed',
+                label: 'Junior',
                 data: generateRandomData(7),
                 borderWidth: 1,
                 fill: true,
@@ -157,13 +157,70 @@ new Chart(document.getElementById('order-chart'), {
                 tension: .2
             },
             {
-                label: 'Canceled',
+                label: 'Suite',
                 data: generateRandomData(7),
                 borderWidth: 1,
                 fill: true,
                 pointBackgroundColor: 'rgb(244, 63, 94)',
                 borderColor: 'rgb(244, 63, 94)',
                 backgroundColor: 'rgb(244 63 94 / .05)',
+                tension: .2
+            },
+        ]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// start: graphic-ghab
+new Chart(document.getElementById('graphic-acom'), {
+    type: 'line',
+    data: {
+        labels: generateNDays(7),
+        datasets: [
+            {
+                label: 'Sencilla',
+                data: generateRandomData(7),
+                borderWidth: 1,
+                fill: true,
+                pointBackgroundColor: 'rgb(59, 130, 246)',
+                borderColor: 'rgb(59, 130, 246)',
+                backgroundColor: 'rgb(59 130 246 / .05)',
+                tension: .2
+            },
+            {
+                label: 'Doble',
+                data: generateRandomData(7),
+                borderWidth: 1,
+                fill: true,
+                pointBackgroundColor: 'rgb(16, 185, 129)',
+                borderColor: 'rgb(16, 185, 129)',
+                backgroundColor: 'rgb(16 185 129 / .05)',
+                tension: .2
+            },
+            {
+                label: 'Triple',
+                data: generateRandomData(7),
+                borderWidth: 1,
+                fill: true,
+                pointBackgroundColor: 'rgb(244, 63, 94)',
+                borderColor: 'rgb(244, 63, 94)',
+                backgroundColor: 'rgb(244 63 94 / .05)',
+                tension: .2
+            },
+            {
+                label: 'Cuádruple',
+                data: generateRandomData(7),
+                borderWidth: 1,
+                fill: true,
+                pointBackgroundColor: 'yellow',
+                borderColor: 'yellow',
+                backgroundColor: 'rgb(255 255 0 / .05)',
                 tension: .2
             },
         ]
