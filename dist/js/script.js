@@ -255,15 +255,19 @@ function generateRandomData(n) {
 }
 // end: Chart
 
-// Función para mostrar el modal
+// Función para Crear Hotel
+function crearHotel() {
+    document.getElementById('crearHotel').classList.remove('hidden');
+}
+
+// Función para Editar Hotel
 function openModal() {
     document.getElementById('editModal').classList.remove('hidden');
-
 }
 
 // Función para ocultar el modal
 function closeModal() {
-    document.getElementById('editModal').classList.add('hidden');
+    document.getElementById('closeModal').classList.add('hidden');
 }
 
 // Asociar la función openModal al clic en el botón "Editar"
