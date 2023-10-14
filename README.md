@@ -23,4 +23,8 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### Prueba
+### Grupo 
+### Michael Aldair Casas Mejia
+### Andres Felipe Ruiz Mestra
+### Frederick Hoyos Franco
+### Esteban David Bustamante Pastrana
