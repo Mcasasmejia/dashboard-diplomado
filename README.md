@@ -24,7 +24,7 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Grupo 
-### * Michael Aldair Casas Mejia
-### * Andres Felipe Ruiz Mestra
-### * Frederick Hoyos Franco
-### * Esteban David Bustamante Pastrana
+- Michael Aldair Casas Mejia
+- Andres Felipe Ruiz Mestra
+- Frederick Hoyos Franco
+- Esteban David Bustamante Pastrana
