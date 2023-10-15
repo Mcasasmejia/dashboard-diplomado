@@ -27,9 +27,3 @@ npm run dev
 ```sh
 npm run build
 ```
-
-### Integrantes: 
-- Michael Aldair Casas Mejia
-- Andres Felipe Ruiz Mestra
-- Frederick Hoyos Franco
-- Esteban David Bustamante Pastrana
