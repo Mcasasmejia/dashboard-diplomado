@@ -1,15 +1,13 @@
 <script>
-export default {
-  
-}
+
+import HeaderPage from './components/HeaderPage.vue';
+import SliderBar from './components/SliderBar.vue';
+
+
 </script>
 
 <template>
-  <div>
 
-    <h1>COMPONENTE PRINCIPAL</h1>
-    
-  </div>
 </template>
 
 <style>
