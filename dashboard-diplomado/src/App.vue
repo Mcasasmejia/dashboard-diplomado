@@ -1,3 +1,9 @@
+<script setup>
+
+import HeaderPage from './components/HeaderPage.vue';
+
+</script>
+
 <template>
   <div>
     <!-- start: Sidebar -->
@@ -109,5 +115,13 @@
     </div>
     <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
     <!-- end: Sidebar -->
+    
+    <HeaderPage/>
+
+    
+
   </div>
+
+  
+  
 </template>
