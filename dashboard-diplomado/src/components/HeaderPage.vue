@@ -32,5 +32,4 @@
             </ul>
         </div>
     <!-- end: Main -->
-
 </template>

@@ -6,8 +6,7 @@
                     <div class="">
                         <h2 class="text-base font-semibold leading-7 text-gray-900">Hoteles Prueba</h2>
 
-                        <p class="mt-1 text-sm leading-6 text-gray-600">Esta información muestra los hoteles o habitaciones más populares
-                            en la comunidad.</p>
+                        <p class="mt-1 text-sm leading-6 text-gray-600">Esta información muestra los hoteles o habitaciones más populares en la comunidad.</p>
 
                     </div>
                     <div class="mt-2">

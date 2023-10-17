@@ -43,6 +43,8 @@ document.querySelectorAll('.sidebar-dropdown-toggle').forEach(function (item) {
 })
 // end: Sidebar
 
+
+
 // start: Popper
 const popperInstance = {}
 document.querySelectorAll('.dropdown').forEach(function (item, index) {
@@ -68,7 +70,6 @@ document.querySelectorAll('.dropdown').forEach(function (item, index) {
         placement: 'bottom-end'
     });
 })
-
 document.addEventListener('click', function (e) {
     const toggle = e.target.closest('.dropdown-toggle')
     const menu = e.target.closest('.dropdown-menu')
@@ -106,7 +107,6 @@ function showPopper(popperId) {
     });
     popperInstance[popperId].update();
 }
-
 function hidePopper(popperId) {
     popperInstance[popperId].setOptions(function (options) {
         return {
@@ -369,6 +369,7 @@ function closeModalDh() {
     document.getElementById('deleteModal').classList.add('hidden');
 }
 
+
 const fileInput = document.getElementById("imagenes");
 const imageContainer = document.querySelector(".image-container");
 
@@ -382,5 +383,3 @@ fileInput.addEventListener("change", function () {
         imageContainer.appendChild(image);
     }
 });
-
-
