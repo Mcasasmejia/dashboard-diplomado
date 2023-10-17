@@ -28,10 +28,14 @@
                 </a>
                 <ul class="pl-7 mt-2 hidden group-[.selected]:block">
                     <li class="mb-4">
-                        <a href="src/pages/informes_hab.html" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Gráficos Habitaciones</a>
+                        <router-link to="/informes_habitaciones" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">
+                            Gráficos Habitaciones
+                        </router-link>
                     </li> 
                     <li class="mb-4">
-                        <a href="src/pages/informes_acom.html" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Gráficos Acomodaciones</a>
+                        <router-link to="/informes_acomodaciones" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">
+                            Gráficos Acomodaciones
+                        </router-link>
                     </li> 
                 </ul>
             </li>
