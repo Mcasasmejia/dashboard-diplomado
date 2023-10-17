@@ -382,14 +382,14 @@ function showModalEliminarHotel() {
                                 </td>
                                 <td class="py-2 px-4 border-b border-b-gray-50">
                                     <span class="text-[13px] font-medium text-gray-400">Montería</span>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">Crr 9C #67-32</span>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">2</span>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
+                                </td>
+                                <td class="py-2 px-4 border-b border-b-gray-50">
+                                    <span class="text-[13px] font-medium text-gray-400">Crr 9C #67-32</span>
+                                </td>
+                                <td class="py-2 px-4 border-b border-b-gray-50">
+                                    <span class="text-[13px] font-medium text-gray-400">2</span>
+                                </td>
+                                <td class="py-2 px-4 border-b border-b-gray-50">
                                 <router-link to="/habitaciones"
                                     class="py-2 flex items-center justify-center text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 w-16 h-9">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor"
@@ -400,8 +400,8 @@ function showModalEliminarHotel() {
                                     </svg>
                                     Ver
                                 </router-link>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
+                                </td>
+                                <td class="py-2 px-4 border-b border-b-gray-50">
                                     <div class="dropdown">
                                         <button type="button"
                                             class="dropdown-toggle text-gray-400 hover:text-gray-600 text-sm w-6 h-6 rounded flex items-center justify-center bg-gray-50"><i
@@ -435,7 +435,7 @@ function showModalEliminarHotel() {
                                         </ul>
                                     </div>
                                 </td>
-                        </tr>
+                            </tr>
                     </tbody>
                 </table>
             </div>
