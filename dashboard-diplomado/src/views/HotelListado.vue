@@ -605,11 +605,9 @@ function showModalEliminarHotel() {
                                     </div>
                                 </template>
     </Modal>
-    <!-- CIERRE - MODAL CREAR HOTEL-->
+    <!-- CIERRE - MODAL VER HOTEL-->
 
-
-    <!--INICIO - MODAL EDITAR HOTEL-->
-    <div>
+    <!--INICIO - MODAL EDITAR HOTEL-->  
     <Modal :size="size" v-if="isShowModalEditarHotel" @close="closeModalEditarHotel">
         <template #header>
             <div class="flex items-center text-lg font-semibold text-gray-900">
@@ -673,12 +671,11 @@ function showModalEliminarHotel() {
         </div>
       </template>
     </Modal>
-    </div>
     <!-- CIERRE - MODAL EDITAR HOTEL-->
 
     <!--INICIO - MODAL ELIMINAR HOTEL-->
-        <Modal :size="size" v-if="isShowModalEliminarHotel" @close="closeModalEliminarHotel">
-                <template #body>
+    <Modal :size="size" v-if="isShowModalEliminarHotel" @close="closeModalEliminarHotel">
+        <template #body>
                     <div class="p-6 text-center">
                 <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
@@ -689,8 +686,8 @@ function showModalEliminarHotel() {
                 </button>
                 <button @click="closeModalEliminarHotel" data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancelar</button>
             </div>
-                </template>
-        </Modal>
+        </template>
+    </Modal>
     <!-- CIERRE - MODAL ELIMINAR HOTEL-->
 </div>
 </template>
