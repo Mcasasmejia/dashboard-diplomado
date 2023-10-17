@@ -10,6 +10,11 @@ const router = createRouter({
       component: HotelListado
     },
     {
+      path: '/habitaciones',
+      name: 'habitaciones',
+      component: () => import('../views/Habitaciones.vue')
+    },
+    {
       path: '/informes_acomodaciones',
       name: 'informes_acomodaciones',
       component: () => import('../views/Informes_Acom.vue')
@@ -20,10 +25,10 @@ const router = createRouter({
       component: () => import('../views/Informes_Hab.vue')
     },
     {
-      path: '/habitaciones',
-      name: 'habitaciones',
-      component: () => import('../views/Habitaciones.vue')
-    }
+      path: '/prueba',
+      name: 'prueba',
+      component: () => import('../views/Prueba.vue')
+    },
   ]
 })
 
