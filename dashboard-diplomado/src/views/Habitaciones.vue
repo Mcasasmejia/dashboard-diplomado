@@ -1,3 +1,27 @@
+<script setup>
+import { Modal } from 'flowbite-vue'
+import { ref } from 'vue'
+
+// Modal Agregar Habitación
+const isShowModal = ref(false)
+function closeModal() {
+  isShowModal.value = false
+}
+function showModal() {
+  isShowModal.value = true
+}
+
+const isShowModalEditarHabitacion = ref(false)
+function closeModalEditarHabitacion() {
+    isShowModalEditarHabitacion.value = false
+}
+function ShowModalEditarHabitacion() {
+    isShowModalEditarHabitacion.value = true
+}
+
+
+</script>
+
 <template>
     <div>
  <!-- card del enunciado principañ -->
@@ -9,7 +33,7 @@
                         <p class="mt-1 text-sm leading-6 text-gray-600">Puede disfrutar la información compartida de las habitaciones, actualmente solo estan disponibles estas habitaciones.</p>
                     </div>
                     <div class="mt-2">
-                        <button type="submit" class="block w-full rounded-md bg-primary-700 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600" onclick="openModalCh()">Crear Habitación</button>
+                        <button @click="showModal" type="submit" class="block w-full rounded-md bg-primary-700 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600" onclick="openModalCh()">Crear Habitación</button>
                     </div>
                 </div>
                             <!-- lista de los hoteles -->
@@ -25,7 +49,7 @@
                             <div class="flex justify-between mt-4">
                                 <!-- Opción Editar -->
                                 <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    onclick="openModalh()">
+                                    @click="ShowModalEditarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path
@@ -443,7 +467,7 @@
         <div id="editHa" class="modal fixed inset-0 flex items-center justify-center hidden">
             <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
             <div class="modal-content bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-                <h2 class="text-2xl font-semibold py-4 px-6">Crear Habitación</h2>
+                <h2 class="text-2xl font-semibold py-4 px-6">Agregar Habitación</h2>
                 <form class="px-6 pb-6">
                     <!-- Lista de hoteles con valor por defecto -->
                     <label for="hotel" class="block font-semibold text-gray-700">Selecciona un hotel:</label>
@@ -496,10 +520,136 @@
                 </form>
             </div>
         </div>
+    <div>
+    
+    <!--INICIO - MODAL AGREGAR HABITACIÓN-->
+    <Modal :size="size" v-if="isShowModal" @close="closeModal">
+        <template #header>
+            <div class="flex items-center text-lg font-semibold text-gray-900">
+                Agregar Habitación
+            </div>
+        </template>
+        <template #body>
+        <form>
+            <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="col-span-full">
+                    <label for="first-name"
+                    class="block text-sm font-medium leading-6 text-gray-900">Codigo Habitación</label>
+                <div class="mt-2">
+                    <input type="text" name="first-name" id="first-name"
+                    autocomplete="given-name"
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                </div>
+
+                <div class="sm:col-span-3">
+                    <label for="last-name"
+                    class="block text-sm font-medium leading-6 text-gray-900">Tipo</label>
+                    <div class="mt-2">
+                        <select id="country" name="country" autocomplete="country-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                            <option>Estándar</option>
+                            <option>Junior</option>
+                            <option>Suite</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="sm:col-span-3">
+                    <label for="acomodacion"
+                    class="block text-sm font-medium leading-6 text-gray-900">Acomodación</label>
+                    <div class="mt-2">
+                        <select id="acomodacion" name="acomodacion" autocomplete="acomodacion-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                        <option>Sencilla</option>
+                        <option>Doble</option>
+                        <option>Triple</option>
+                        <option>Cuádruple</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </template>
+        <template #footer>
+            <div class="flex justify-between">
+                <button @click="closeModal" type="button"
+                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                    Cerrar
+                </button>
+                <button @click="closeModal" type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Agregar
+                </button>
+            </div>
+        </template>
+    </Modal>
+    <!-- CIERRE - MODAL AGREGAR HABITACIÓN-->
+
+    <!--INICIO - MODAL EDITAR HABITACIÓN-->
+    <Modal :size="size" v-if="isShowModalEditarHabitacion" @close="closeModalEditarHabitacion">
+        <template #header>
+            <div class="flex items-center text-lg font-semibold text-gray-900">
+                Editar Habitación
+            </div>
+        </template>
+        <template #body>
+        <form>
+            <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="col-span-full">
+                    <label for="first-name"
+                    class="block text-sm font-medium leading-6 text-gray-900">Codigo Habitación</label>
+                <div class="mt-2">
+                    <input type="text" name="first-name" id="first-name"
+                    autocomplete="given-name"
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                </div>
+
+                <div class="sm:col-span-3">
+                    <label for="last-name"
+                    class="block text-sm font-medium leading-6 text-gray-900">Tipo</label>
+                    <div class="mt-2">
+                        <select id="country" name="country" autocomplete="country-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                            <option>Estándar</option>
+                            <option>Junior</option>
+                            <option>Suite</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="sm:col-span-3">
+                    <label for="acomodacion"
+                    class="block text-sm font-medium leading-6 text-gray-900">Acomodación</label>
+                    <div class="mt-2">
+                        <select id="acomodacion" name="acomodacion" autocomplete="acomodacion-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                        <option>Sencilla</option>
+                        <option>Doble</option>
+                        <option>Triple</option>
+                        <option>Cuádruple</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </template>
+        <template #footer>
+            <div class="flex justify-between">
+                <button @click="closeModalEditarHabitacion" type="button"
+                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                    Cerrar
+                </button>
+                <button @click="closeModalEditarHabitacion" type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Editar
+                </button>
+            </div>
+        </template>
+    </Modal>
+    <!-- CIERRE - MODAL EDITAR HABITACIÓN-->
+    </div>
     </div>
 </template>
 
-<script>
-
-
-</script>
