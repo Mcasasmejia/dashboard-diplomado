@@ -1,3 +1,12 @@
+<script>
+import BarChart from '../components/BarChart.vue'
+
+export default {
+  name: 'App',
+  components: { BarChart }
+}
+</script>
+
 <template>
     <div>
     <div class="p-6">
@@ -9,6 +18,11 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div>
+        <template>
+            <BarChart />
+        </template>
     </div>
     <div class="p-6">
     <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">

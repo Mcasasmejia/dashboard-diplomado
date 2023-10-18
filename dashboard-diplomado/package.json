@@ -9,9 +9,12 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "apexcharts": "^3.44.0",
+    "chart.js": "^4.4.0",
     "flowbite": "^1.8.1",
     "flowbite-vue": "^0.0.17",
     "vue": "^3.3.4",
+    "vue-chartjs": "^5.2.0",
     "vue-popperjs": "^2.3.0",
     "vue-router": "^4.2.4"
   },
