@@ -1,8 +1,39 @@
 <script>
+import { Bar } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+
 export default {
-    
+  name: 'BarChart',
+  components: { Bar },
+  data() {
+    return {
+      chartData: {
+        labels: [ 'Estandar', 'Junior', 'Suite'],
+        datasets: [
+          {
+              label: ['Estandar'],
+              backgroundColor: ['rgb(59, 130, 246)'],
+              data: [40],
+          },
+          {
+              label: ['Junior'],
+              backgroundColor: ['rgb(16, 185, 129)'],
+              data: [20],
+          },
+          {
+              label: ['Suite'],
+              backgroundColor: ['rgb(244, 63, 94)'],
+              data: [12],
+          }
+        ]
+      }
+    }
+  }
 }
 </script>
+
 <template>
     <div>
         
@@ -23,7 +54,7 @@ export default {
             <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                 <div class="flex justify-between mb-4 items-start">
                     <div class="font-medium">Gráficos</div>
-                    <div class="dropdown">
+                    <!-- <div class="dropdown">
                         <button type="button" class="dropdown-toggle text-gray-400 hover:text-gray-600"><i class="ri-more-fill"></i></button>
                         <ul class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
                             <li>
@@ -36,7 +67,7 @@ export default {
                                 <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Suite</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
                     <div class="rounded-md border border-dashed border-gray-200 p-4">
@@ -62,7 +93,7 @@ export default {
                     </div>
                 </div>
                 <div>
-                    <canvas id="graphic-hab"></canvas>
+                    <Bar :data="chartData" />
                 </div>
             </div>
         </div>
