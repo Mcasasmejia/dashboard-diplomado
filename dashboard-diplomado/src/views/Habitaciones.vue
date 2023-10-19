@@ -40,7 +40,10 @@ function ShowModalEliminarHabitacion() {
                         <p class="mt-1 text-sm leading-6 text-gray-600">Puede disfrutar la información compartida de las habitaciones, actualmente solo estan disponibles estas habitaciones.</p>
                     </div>
                     <div class="mt-2">
-                        <button @click="showModal" type="submit" class="block w-full rounded-md bg-primary-700 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600" onclick="openModalCh()">Agregar Habitación</button>
+                        <button @click="showModal" type="submit" class="block w-full rounded-md bg-primary-700 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600">
+                            <i class="ri-add-line mr-1.5"></i>
+                            Agregar Habitación
+                        </button>
                     </div>
                 </div>
                             <!-- lista de los hoteles -->
