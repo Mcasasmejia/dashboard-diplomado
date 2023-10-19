@@ -45,400 +45,414 @@ function showModalEliminarHotel() {
     <div>
         <div class="p-6">
             <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
-                <div class="flex justify-between mb-6">
+                <div class="flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4">
                     <div class="">
                         <h2 class="text-base font-semibold leading-7 text-gray-900">Hoteles</h2>
                         <p class="mt-1 text-sm leading-6 text-gray-600">Esta información muestra los hoteles o habitaciones
                             más populares en la comunidad.</p>
                     </div>
-                    <div class="mt-2">
-                        <div>
-                            <button @click="showModal" type="button"
-                                class="mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                Crear Hotel
+                </div>
+                <div class="flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4 border-t dark:border-gray-700">
+                        <div class="w-full">
+                            <form class="flex items-center">
+                                <label for="simple-search" class="sr-only">Search</label>
+                                <div class="relative w-full">
+                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" />
+                                        </svg>
+                                    </div>
+                                    <input type="text" id="simple-search" placeholder="Buscar Hoteles" required="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                            <button type="button" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                            @click="showModal">
+                                <i class="ri-add-line mr-1.5"></i>
+                                Agregar Hotel
                             </button>
                         </div>
                     </div>
-                </div>
-                <form action="" class="flex items-center mb-4">
-                    <div class="relative w-full mr-2">
-                        <input type="text"
-                            class="py-2 pr-4 pl-10 bg-gray-50 w-full outline-none border border-gray-100 rounded-md text-sm focus:border-blue-500"
-                            placeholder="Buscar...">
-                        <i class="ri-search-line absolute top-1/2 left-4 -translate-y-1/2 text-gray-400"></i>
-                    </div>
-                </form>
                 <div class="overflow-x-auto">
-                    <table class="w-full min-w-[540px]">
-                        <thead>
-                            <tr>
-                                <th
-                                    class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
-                                    NIT</th>
-                                <th
-                                    class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
-                                    Nombre</th>
-                                <th
-                                    class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
-                                    Ciudad</th>
-                                <th
-                                    class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">
-                                    Dirección</th>
-                                <th
-                                    class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">
-                                    Max Habitaciones</th>
-                                <th
-                                    class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">
-                                    Habitaciones</th>
-                                <th
-                                    class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">
-                                    Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <div class="flex items-center">
-                                        <img src="https://placehold.co/32x32" alt=""
-                                            class="w-8 h-8 rounded object-cover block">
-                                        <a href="#"
-                                            class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">27220950-4</a>
-                                    </div>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">Conquistador</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">Montería</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">Crr 9C #67-32</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">2</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <router-link to="/habitaciones"
-                                        class="py-2 flex items-center justify-center text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 w-16 h-9">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor"
-                                            class="w-4 h-4 mr-2 -ml-0.5">
-                                            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" />
-                                        </svg>
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="p-4">
+                                        <div class="flex items-center">
+                                            <input id="checkbox-all" type="checkbox" class="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="checkbox-all" class="sr-only">checkbox</label>
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="p-4">NIT</th>
+                                    <th scope="col" class="p-4">Nombre</th>
+                                    <th scope="col" class="p-4">Ciudad</th>
+                                    <th scope="col" class="p-4">Dirección</th>
+                                    <th scope="col" class="p-4">Max Habitaciones</th>
+                                    <th scope="col" class="p-4">Habitaciones</th>
+                                    <th scope="col" class="p-4">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <td class="p-4 w-4">
+                                        <div class="flex items-center">
+                                            <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                        </div>
+                                    </td>
+                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center mr-3">
+                                            27220950-4
+                                        </div>
+                                    </th>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Conquistador</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Montería</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Crr 9B #15-66</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">10</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center space-x-4">
+                                        <router-link to="/habitaciones"
+                                        class="py-1 px-2.5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-green-600 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                        <i class="ri-hotel-bed-fill mr-2 text-lg"></i>
                                         Ver
-                                    </router-link>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <div class="dropdown">
-                                        <button type="button"
-                                            class="dropdown-toggle text-gray-400 hover:text-gray-600 text-sm w-6 h-6 rounded flex items-center justify-center bg-gray-50"><i
-                                                class="ri-more-2-fill"></i></button>
-                                        <ul
-                                            class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                                            <li>
-                                                <a href="#" id="editButton"
-                                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-green-500 hover:bg-gray-50"
-                                                    @click="showModalEditarHotel">
-                                                    <i class="ri-edit-box-line mr-3 text-lg"></i>
-                                                    <span class="text-sm">Editar</span> 
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" id="verButton"
-                                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                                                    @click="showModalVerHotel">
-                                                    <i class="ri-eye-fill mr-3 text-lg"></i>
-                                                    <span class="text-sm">Ver</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" id="eliminarButton"
-                                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-red-500 hover:bg-gray-50"
-                                                    @click="showModalEliminarHotel">
-                                                    <i class="ri-delete-bin-line mr-3 text-lg"></i>
-                                                    <span class="text-sm">Eliminar</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <div class="flex items-center">
-                                        <img src="https://placehold.co/32x32" alt=""
-                                            class="w-8 h-8 rounded object-cover block">
-                                        <a href="#"
-                                            class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">27220950-4</a>
-                                    </div>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">Conquistador</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">Montería</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">Crr 9C #67-32</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">2</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <router-link to="/habitaciones"
-                                        class="py-2 flex items-center justify-center text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 w-16 h-9">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor"
-                                            class="w-4 h-4 mr-2 -ml-0.5">
-                                            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" />
-                                        </svg>
+                                        </router-link>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center space-x-4">
+                                            <button type="button" class="flex items-center py-1 px-2.5 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                            @click="showModalEditarHotel">
+                                                <i class="ri-edit-box-line mr-2 text-lg"></i>
+                                                Editar
+                                        </button>
+                                        <button type="button" class="py-1 px-2.5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                            @click="showModalVerHotel">
+                                                <i class="ri-eye-fill mr-2 text-lg"></i>
+                                                Ver
+                                        </button>
+                                        <button type="button" class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2.5 py-1 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+                                            @click="showModalEliminarHotel">
+                                                <i class="ri-delete-bin-fill mr-2 text-lg"></i>
+                                                Eliminar
+                                        </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <td class="p-4 w-4">
+                                        <div class="flex items-center">
+                                            <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                        </div>
+                                    </td>
+                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center mr-3">
+                                            27220950-4
+                                        </div>
+                                    </th>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Conquistador</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Montería</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Crr 9B #15-66</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">10</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center space-x-4">
+                                        <router-link to="/habitaciones"
+                                        class="py-1 px-2.5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-green-600 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                        <i class="ri-hotel-bed-fill mr-2 text-lg"></i>
                                         Ver
-                                    </router-link>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <div class="dropdown">
-                                        <button type="button"
-                                            class="dropdown-toggle text-gray-400 hover:text-gray-600 text-sm w-6 h-6 rounded flex items-center justify-center bg-gray-50"><i
-                                                class="ri-more-2-fill"></i></button>
-                                        <ul
-                                            class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                                            <li>
-                                                <a href="#" id="editButton"
-                                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-green-500 hover:bg-gray-50"
-                                                    @click="showModalEditarHotel">
-                                                    <i class="ri-edit-box-line mr-3 text-lg"></i>
-                                                    <span class="text-sm">Editar</span> 
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" id="verButton"
-                                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                                                    @click="showModalVerHotel">
-                                                    <i class="ri-eye-fill mr-3 text-lg"></i>
-                                                    <span class="text-sm">Ver</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" id="eliminarButton"
-                                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-red-500 hover:bg-gray-50"
-                                                    @click="showModalEliminarHotel">
-                                                    <i class="ri-delete-bin-line mr-3 text-lg"></i>
-                                                    <span class="text-sm">Eliminar</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <div class="flex items-center">
-                                        <img src="https://placehold.co/32x32" alt=""
-                                            class="w-8 h-8 rounded object-cover block">
-                                        <a href="#"
-                                            class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">27220950-4</a>
-                                    </div>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">Conquistador</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">Montería</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">Crr 9C #67-32</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">2</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <router-link to="/habitaciones"
-                                        class="py-2 flex items-center justify-center text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 w-16 h-9">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor"
-                                            class="w-4 h-4 mr-2 -ml-0.5">
-                                            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" />
-                                        </svg>
+                                        </router-link>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center space-x-4">
+                                            <button type="button" class="flex items-center py-1 px-2.5 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                            @click="showModalEditarHotel">
+                                                <i class="ri-edit-box-line mr-2 text-lg"></i>
+                                                Editar
+                                        </button>
+                                        <button type="button" class="py-1 px-2.5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                            @click="showModalVerHotel">
+                                                <i class="ri-eye-fill mr-2 text-lg"></i>
+                                                Ver
+                                        </button>
+                                        <button type="button" class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2.5 py-1 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+                                            @click="showModalEliminarHotel">
+                                                <i class="ri-delete-bin-fill mr-2 text-lg"></i>
+                                                Eliminar
+                                        </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <td class="p-4 w-4">
+                                        <div class="flex items-center">
+                                            <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                        </div>
+                                    </td>
+                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center mr-3">
+                                            27220950-4
+                                        </div>
+                                    </th>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Conquistador</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Montería</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Crr 9B #15-66</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">10</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center space-x-4">
+                                        <router-link to="/habitaciones"
+                                        class="py-1 px-2.5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-green-600 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                        <i class="ri-hotel-bed-fill mr-2 text-lg"></i>
                                         Ver
-                                    </router-link>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <div class="dropdown">
-                                        <button type="button"
-                                            class="dropdown-toggle text-gray-400 hover:text-gray-600 text-sm w-6 h-6 rounded flex items-center justify-center bg-gray-50"><i
-                                                class="ri-more-2-fill"></i></button>
-                                        <ul
-                                            class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                                            <li>
-                                                <a href="#" id="editButton"
-                                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-green-500 hover:bg-gray-50"
-                                                    @click="showModalEditarHotel">
-                                                    <i class="ri-edit-box-line mr-3 text-lg"></i>
-                                                    <span class="text-sm">Editar</span> 
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" id="verButton"
-                                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                                                    @click="showModalVerHotel">
-                                                    <i class="ri-eye-fill mr-3 text-lg"></i>
-                                                    <span class="text-sm">Ver</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" id="eliminarButton"
-                                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-red-500 hover:bg-gray-50"
-                                                    @click="showModalEliminarHotel">
-                                                    <i class="ri-delete-bin-line mr-3 text-lg"></i>
-                                                    <span class="text-sm">Eliminar</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <div class="flex items-center">
-                                        <img src="https://placehold.co/32x32" alt=""
-                                            class="w-8 h-8 rounded object-cover block">
-                                        <a href="#"
-                                            class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">27220950-4</a>
-                                    </div>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">Conquistador</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">Montería</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">Crr 9C #67-32</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">2</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <router-link to="/habitaciones"
-                                        class="py-2 flex items-center justify-center text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 w-16 h-9">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor"
-                                            class="w-4 h-4 mr-2 -ml-0.5">
-                                            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" />
-                                        </svg>
+                                        </router-link>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center space-x-4">
+                                            <button type="button" class="flex items-center py-1 px-2.5 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                            @click="showModalEditarHotel">
+                                                <i class="ri-edit-box-line mr-2 text-lg"></i>
+                                                Editar
+                                        </button>
+                                        <button type="button" class="py-1 px-2.5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                            @click="showModalVerHotel">
+                                                <i class="ri-eye-fill mr-2 text-lg"></i>
+                                                Ver
+                                        </button>
+                                        <button type="button" class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2.5 py-1 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+                                            @click="showModalEliminarHotel">
+                                                <i class="ri-delete-bin-fill mr-2 text-lg"></i>
+                                                Eliminar
+                                        </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <td class="p-4 w-4">
+                                        <div class="flex items-center">
+                                            <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                        </div>
+                                    </td>
+                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center mr-3">
+                                            27220950-4
+                                        </div>
+                                    </th>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Conquistador</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Montería</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Crr 9B #15-66</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">10</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center space-x-4">
+                                        <router-link to="/habitaciones"
+                                        class="py-1 px-2.5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-green-600 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                        <i class="ri-hotel-bed-fill mr-2 text-lg"></i>
                                         Ver
-                                    </router-link>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <div class="dropdown">
-                                        <button type="button"
-                                            class="dropdown-toggle text-gray-400 hover:text-gray-600 text-sm w-6 h-6 rounded flex items-center justify-center bg-gray-50"><i
-                                                class="ri-more-2-fill"></i></button>
-                                        <ul
-                                            class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                                            <li>
-                                                <a href="#" id="editButton"
-                                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-green-500 hover:bg-gray-50"
-                                                    @click="showModalEditarHotel">
-                                                    <i class="ri-edit-box-line mr-3 text-lg"></i>
-                                                    <span class="text-sm">Editar</span> 
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" id="verButton"
-                                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                                                    @click="showModalVerHotel">
-                                                    <i class="ri-eye-fill mr-3 text-lg"></i>
-                                                    <span class="text-sm">Ver</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" id="eliminarButton"
-                                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-red-500 hover:bg-gray-50"
-                                                    @click="showModalEliminarHotel">
-                                                    <i class="ri-delete-bin-line mr-3 text-lg"></i>
-                                                    <span class="text-sm">Eliminar</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <div class="flex items-center">
-                                        <img src="https://placehold.co/32x32" alt=""
-                                            class="w-8 h-8 rounded object-cover block">
-                                        <a href="#"
-                                            class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">27220950-4</a>
-                                    </div>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">Conquistador</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">Montería</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">Crr 9C #67-32</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-400">2</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                <router-link to="/habitaciones"
-                                    class="py-2 flex items-center justify-center text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 w-16 h-9">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor"
-                                        class="w-4 h-4 mr-2 -ml-0.5">
-                                        <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" />
+                                        </router-link>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center space-x-4">
+                                            <button type="button" class="flex items-center py-1 px-2.5 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                            @click="showModalEditarHotel">
+                                                <i class="ri-edit-box-line mr-2 text-lg"></i>
+                                                Editar
+                                        </button>
+                                        <button type="button" class="py-1 px-2.5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                            @click="showModalVerHotel">
+                                                <i class="ri-eye-fill mr-2 text-lg"></i>
+                                                Ver
+                                        </button>
+                                        <button type="button" class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2.5 py-1 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+                                            @click="showModalEliminarHotel">
+                                                <i class="ri-delete-bin-fill mr-2 text-lg"></i>
+                                                Eliminar
+                                        </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <td class="p-4 w-4">
+                                        <div class="flex items-center">
+                                            <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                        </div>
+                                    </td>
+                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center mr-3">
+                                            27220950-4
+                                        </div>
+                                    </th>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Conquistador</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Montería</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Crr 9B #15-66</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">10</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center space-x-4">
+                                        <router-link to="/habitaciones"
+                                        class="py-1 px-2.5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-green-600 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                        <i class="ri-hotel-bed-fill mr-2 text-lg"></i>
+                                        Ver
+                                        </router-link>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center space-x-4">
+                                            <button type="button" class="flex items-center py-1 px-2.5 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                            @click="showModalEditarHotel">
+                                                <i class="ri-edit-box-line mr-2 text-lg"></i>
+                                                Editar
+                                        </button>
+                                        <button type="button" class="py-1 px-2.5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                            @click="showModalVerHotel">
+                                                <i class="ri-eye-fill mr-2 text-lg"></i>
+                                                Ver
+                                        </button>
+                                        <button type="button" class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2.5 py-1 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+                                            @click="showModalEliminarHotel">
+                                                <i class="ri-delete-bin-fill mr-2 text-lg"></i>
+                                                Eliminar
+                                        </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <td class="p-4 w-4">
+                                        <div class="flex items-center">
+                                            <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                        </div>
+                                    </td>
+                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center mr-3">
+                                            27220950-4
+                                        </div>
+                                    </th>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Conquistador</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Montería</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Crr 9B #15-66</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">10</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center space-x-4">
+                                        <router-link to="/habitaciones"
+                                        class="py-1 px-2.5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-green-600 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                        <i class="ri-hotel-bed-fill mr-2 text-lg"></i>
+                                        Ver
+                                        </router-link>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center space-x-4">
+                                            <button type="button" class="flex items-center py-1 px-2.5 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                            @click="showModalEditarHotel">
+                                                <i class="ri-edit-box-line mr-2 text-lg"></i>
+                                                Editar
+                                        </button>
+                                        <button type="button" class="py-1 px-2.5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                            @click="showModalVerHotel">
+                                                <i class="ri-eye-fill mr-2 text-lg"></i>
+                                                Ver
+                                        </button>
+                                        <button type="button" class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2.5 py-1 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+                                            @click="showModalEliminarHotel">
+                                                <i class="ri-delete-bin-fill mr-2 text-lg"></i>
+                                                Eliminar
+                                        </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <td class="p-4 w-4">
+                                        <div class="flex items-center">
+                                            <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                        </div>
+                                    </td>
+                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center mr-3">
+                                            27220950-4
+                                        </div>
+                                    </th>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Conquistador</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Montería</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Crr 9B #15-66</td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">10</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center space-x-4">
+                                        <router-link to="/habitaciones"
+                                        class="py-1 px-2.5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-green-600 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                        <i class="ri-hotel-bed-fill mr-2 text-lg"></i>
+                                        Ver
+                                        </router-link>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex items-center space-x-4">
+                                            <button type="button" class="flex items-center py-1 px-2.5 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                            @click="showModalEditarHotel">
+                                                <i class="ri-edit-box-line mr-2 text-lg"></i>
+                                                Editar
+                                        </button>
+                                        <button type="button" class="py-1 px-2.5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                            @click="showModalVerHotel">
+                                                <i class="ri-eye-fill mr-2 text-lg"></i>
+                                                Ver
+                                        </button>
+                                        <button type="button" class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2.5 py-1 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+                                            @click="showModalEliminarHotel">
+                                                <i class="ri-delete-bin-fill mr-2 text-lg"></i>
+                                                Eliminar
+                                        </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
+                        <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
+                            Ver
+                            <span class="font-semibold text-gray-900 dark:text-white">1-10</span>
+                            de
+                            <span class="font-semibold text-gray-900 dark:text-white">1000</span>
+                        </span>
+                        <ul class="inline-flex items-stretch -space-x-px">
+                            <li>
+                                <a href="#" class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <span class="sr-only">Previous</span>
+                                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
                                     </svg>
-                                    Ver
-                                </router-link>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <div class="dropdown">
-                                        <button type="button"
-                                            class="dropdown-toggle text-gray-400 hover:text-gray-600 text-sm w-6 h-6 rounded flex items-center justify-center bg-gray-50"><i
-                                                class="ri-more-2-fill"></i></button>
-                                        <ul
-                                            class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                                            <li>
-                                                <a href="#" id="editButton"
-                                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-green-500 hover:bg-gray-50"
-                                                    @click="showModalEditarHotel">
-                                                    <i class="ri-edit-box-line mr-3 text-lg"></i>
-                                                    <span class="text-sm">Editar</span> 
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" id="verButton"
-                                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                                                    @click="showModalVerHotel">
-                                                    <i class="ri-eye-fill mr-3 text-lg"></i>
-                                                    <span class="text-sm">Ver</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" id="eliminarButton"
-                                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-red-500 hover:bg-gray-50"
-                                                    @click="showModalEliminarHotel">
-                                                    <i class="ri-delete-bin-line mr-3 text-lg"></i>
-                                                    <span class="text-sm">Eliminar</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                    </tbody>
-                </table>
-            </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+                            </li>
+                            <li>
+                                <a href="#" aria-current="page" class="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">...</a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">100</a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <span class="sr-only">Next</span>
+                                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
         </div>
     </div>
     <!--INICIO - MODAL CREAR HOTEL-->
@@ -520,8 +534,12 @@ function showModalEliminarHotel() {
                                             Crear
                                         </button>
                                     </div>
-                                </template>
+                                </template>    
     </Modal>
+
+
+
+    
     <!-- CIERRE - MODAL CREAR HOTEL-->
 
     <!--INICIO - MODAL VER HOTEL-->
@@ -597,10 +615,6 @@ function showModalEliminarHotel() {
                                         <button @click="closeModalVerHotel" type="button"
                                             class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                                             Cerrar
-                                        </button>
-                                        <button @click="closeModalVerHotel" type="button"
-                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                            Crear
                                         </button>
                                     </div>
                                 </template>
