@@ -19,6 +19,13 @@ function ShowModalEditarHabitacion() {
     isShowModalEditarHabitacion.value = true
 }
 
+const isShowModalEliminarHabitacion = ref(false)
+function closeModalEliminarHabitacion() {
+    isShowModalEliminarHabitacion.value = false
+}
+function ShowModalEliminarHabitacion() {
+    isShowModalEliminarHabitacion.value = true
+}
 
 </script>
 
@@ -33,7 +40,7 @@ function ShowModalEditarHabitacion() {
                         <p class="mt-1 text-sm leading-6 text-gray-600">Puede disfrutar la información compartida de las habitaciones, actualmente solo estan disponibles estas habitaciones.</p>
                     </div>
                     <div class="mt-2">
-                        <button @click="showModal" type="submit" class="block w-full rounded-md bg-primary-700 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600" onclick="openModalCh()">Crear Habitación</button>
+                        <button @click="showModal" type="submit" class="block w-full rounded-md bg-primary-700 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600" onclick="openModalCh()">Agregar Habitación</button>
                     </div>
                 </div>
                             <!-- lista de los hoteles -->
@@ -61,7 +68,7 @@ function ShowModalEditarHabitacion() {
                                 </button>
                                 <!-- Opción Eliminar -->
                                 <button class="flex items-center text-red-500 hover:text-red-700"
-                                    onclick="openModalDh()">
+                                    @click="ShowModalEliminarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path fill-rule="evenodd"
@@ -85,7 +92,7 @@ function ShowModalEditarHabitacion() {
                             <div class="flex justify-between mt-4">
                                 <!-- Opción Editar -->
                                 <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    onclick="openModalh()">
+                                    @click="ShowModalEditarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path
@@ -97,7 +104,7 @@ function ShowModalEditarHabitacion() {
                                 </button>
                                 <!-- Opción Eliminar -->
                                 <button class="flex items-center text-red-500 hover:text-red-700"
-                                    onclick="openModalDh()">
+                                    @click="ShowModalEliminarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path fill-rule="evenodd"
@@ -123,7 +130,7 @@ function ShowModalEditarHabitacion() {
                             <div class="flex justify-between mt-4">
                                 <!-- Opción Editar -->
                                 <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    onclick="openModalh()">
+                                    @click="ShowModalEditarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path
@@ -135,7 +142,7 @@ function ShowModalEditarHabitacion() {
                                 </button>
                                 <!-- Opción Eliminar -->
                                 <button class="flex items-center text-red-500 hover:text-red-700"
-                                    onclick="openModalDh()">
+                                    @click="ShowModalEliminarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path fill-rule="evenodd"
@@ -160,7 +167,7 @@ function ShowModalEditarHabitacion() {
                             <div class="flex justify-between mt-4">
                                 <!-- Opción Editar -->
                                 <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    onclick="openModalh()">
+                                    @click="ShowModalEditarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path
@@ -172,7 +179,7 @@ function ShowModalEditarHabitacion() {
                                 </button>
                                 <!-- Opción Eliminar -->
                                 <button class="flex items-center text-red-500 hover:text-red-700"
-                                    onclick="openModalDh()">
+                                    @click="ShowModalEliminarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path fill-rule="evenodd"
@@ -195,7 +202,7 @@ function ShowModalEditarHabitacion() {
                             <div class="flex justify-between mt-4">
                                 <!-- Opción Editar -->
                                 <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    onclick="openModalh()">
+                                    @click="ShowModalEditarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path
@@ -207,7 +214,7 @@ function ShowModalEditarHabitacion() {
                                 </button>
                                 <!-- Opción Eliminar -->
                                 <button class="flex items-center text-red-500 hover:text-red-700"
-                                    onclick="openModalDh()">
+                                    @click="ShowModalEliminarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path fill-rule="evenodd"
@@ -232,7 +239,7 @@ function ShowModalEditarHabitacion() {
                             <div class="flex justify-between mt-4">
                                 <!-- Opción Editar -->
                                 <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    onclick="openModalh()">
+                                    @click="ShowModalEditarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path
@@ -244,7 +251,7 @@ function ShowModalEditarHabitacion() {
                                 </button>
                                 <!-- Opción Eliminar -->
                                 <button class="flex items-center text-red-500 hover:text-red-700"
-                                    onclick="openModalDh()">
+                                    @click="ShowModalEliminarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path fill-rule="evenodd"
@@ -268,7 +275,7 @@ function ShowModalEditarHabitacion() {
                             <div class="flex justify-between mt-4">
                                 <!-- Opción Editar -->
                                 <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    onclick="openModalh()">
+                                    @click="ShowModalEditarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path
@@ -280,7 +287,7 @@ function ShowModalEditarHabitacion() {
                                 </button>
                                 <!-- Opción Eliminar -->
                                 <button class="flex items-center text-red-500 hover:text-red-700"
-                                    onclick="openModalDh()">
+                                    @click="ShowModalEliminarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path fill-rule="evenodd"
@@ -305,7 +312,7 @@ function ShowModalEditarHabitacion() {
                             <div class="flex justify-between mt-4">
                                 <!-- Opción Editar -->
                                 <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    onclick="openModalh()">
+                                    @click="ShowModalEditarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path
@@ -317,7 +324,7 @@ function ShowModalEditarHabitacion() {
                                 </button>
                                 <!-- Opción Eliminar -->
                                 <button class="flex items-center text-red-500 hover:text-red-700"
-                                    onclick="openModalDh()">
+                                    @click="ShowModalEliminarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path fill-rule="evenodd"
@@ -340,7 +347,7 @@ function ShowModalEditarHabitacion() {
                             <div class="flex justify-between mt-4">
                                 <!-- Opción Editar -->
                                 <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    onclick="openModalh()">
+                                    @click="ShowModalEditarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path
@@ -352,7 +359,7 @@ function ShowModalEditarHabitacion() {
                                 </button>
                                 <!-- Opción Eliminar -->
                                 <button class="flex items-center text-red-500 hover:text-red-700"
-                                    onclick="openModalDh()">
+                                    @click="ShowModalEliminarHabitacion">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path fill-rule="evenodd"
@@ -649,6 +656,24 @@ function ShowModalEditarHabitacion() {
         </template>
     </Modal>
     <!-- CIERRE - MODAL EDITAR HABITACIÓN-->
+
+    <!--INICIO - MODAL ELIMINAR HABITACIÓN-->
+    <Modal :size="size" v-if="isShowModalEliminarHabitacion" @close="closeModalEliminarHabitacion">
+        <template #body>
+                    <div class="p-6 text-center">
+                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                </svg>
+                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">¿Estas seguro de eliminar esta Habitación?</h3>
+                <button @click="closeModalEliminarHabitacion" data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                    Si, estoy seguro
+                </button>
+                <button @click="closeModalEliminarHabitacion" data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancelar</button>
+            </div>
+        </template>
+    </Modal>
+    <!-- CIERRE - MODAL ELIMINAR HABITACIÓN-->    
+
     </div>
     </div>
 </template>

@@ -557,8 +557,10 @@ function showModalEliminarHotel() {
                                                     class="block text-sm font-medium leading-6 text-gray-900">NIT</label>
                                                 <div class="mt-2">
                                                     <input type="text" name="first-name" id="first-name"
+                                                        placeholder="27220950-4"
                                                         autocomplete="given-name"
-                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                        disabled>
                                                 </div>
                                             </div>
 
@@ -567,8 +569,10 @@ function showModalEliminarHotel() {
                                                     class="block text-sm font-medium leading-6 text-gray-900">Nombre</label>
                                                 <div class="mt-2">
                                                     <input type="text" name="last-name" id="last-name"
+                                                        placeholder="Conquistador"
                                                         autocomplete="family-name"
-                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                        disabled>
                                                 </div>
                                             </div>
 
@@ -577,7 +581,8 @@ function showModalEliminarHotel() {
                                                     class="block text-sm font-medium leading-6 text-gray-900">Ciudad</label>
                                                 <div class="mt-2">
                                                     <select id="country" name="country" autocomplete="country-name"
-                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                                                        disabled>
                                                         <option>Montería</option>
                                                         <option>Bogotá</option>
                                                         <option>Medellin</option>
@@ -594,7 +599,8 @@ function showModalEliminarHotel() {
                                                 <div class="mt-2">
                                                     <input type="number" id="tentacles" name="tentacles" value="1" min="1"
                                                         max="20"
-                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" 
+                                                        disabled>
                                                 </div>
                                             </div>
 
@@ -603,8 +609,10 @@ function showModalEliminarHotel() {
                                                     class="block text-sm font-medium leading-6 text-gray-900">Dirección</label>
                                                 <div class="mt-2">
                                                     <input type="text" name="street-address" id="street-address"
+                                                        placeholder="Crr 9B #15-66"
                                                         autocomplete="street-address"
-                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                        disabled>
                                                 </div>
                                             </div>
                                         </div>
