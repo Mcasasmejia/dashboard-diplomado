@@ -4,29 +4,34 @@ import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, Li
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
+const labels = [
+    'Tipos',
+];
+
 export default {
   name: 'BarChart',
   components: { Bar },
   data() {
     return {
       chartData: {
-        labels: [ 'Estandar', 'Junior', 'Suite'],
+        labels: labels,
         datasets: [
           {
-              label: ['Estandar'],
+              label: 'Estandar',
               backgroundColor: ['rgb(59, 130, 246)'],
-              data: [40],
+              data: [40, 20, 12],
+              
           },
           {
-              label: ['Junior'],
+              label: 'Junior',
               backgroundColor: ['rgb(16, 185, 129)'],
-              data: [20],
+              data: [20, 20, 20],
           },
           {
-              label: ['Suite'],
+              label: 'Suite',
               backgroundColor: ['rgb(244, 63, 94)'],
-              data: [12],
-          }
+              data: [20, 20, 12],
+          },
         ]
       }
     }

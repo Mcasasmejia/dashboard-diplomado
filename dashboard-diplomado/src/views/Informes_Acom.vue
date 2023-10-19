@@ -1,5 +1,47 @@
 <script>
+import { Bar } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+
+const labels = [
+    'Tipos de Acomodación',
+];
+
+export default {
+  name: 'BarChartAcom',
+  components: { Bar },
+  data() {
+    return {
+      chartData: {
+        labels: labels,
+        datasets: [
+          {
+              label: 'Sencilla',
+              backgroundColor: ['rgb(59, 130, 246)'],
+              data: [40],
+              
+          },
+          {
+              label: 'Doble',
+              backgroundColor: ['rgb(16, 185, 129)'],
+              data: [20],
+          },
+          {
+              label: 'Triple',
+              backgroundColor: ['rgb(244, 63, 94)'],
+              data: [12],
+          },
+          {
+              label: 'Cuadruple',
+              backgroundColor: ['yellow'],
+              data: [12],
+          },
+        ]
+      }
+    }
+  }
+}
 </script>
 
 <template>
@@ -74,7 +116,7 @@
                     </div>
                 </div>
                 <div>
-                    <canvas id="graphic-acom"></canvas>
+                    <Bar :data="chartData" />
                 </div>
             </div>
         </div>
