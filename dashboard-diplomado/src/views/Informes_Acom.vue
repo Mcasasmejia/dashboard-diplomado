@@ -44,8 +44,13 @@ export default {
 }
 </script>
 
+<script setup>
+import BreadCrumb from '../components/BreadCrumb.vue';
+</script>
+
 <template>
     <div>
+    <BreadCrumb modulo="Acomodaciones" />
     <div class="p-6">
     <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
         <div class="flex justify-between mb-4">

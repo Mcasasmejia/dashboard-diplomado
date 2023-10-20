@@ -4,13 +4,13 @@
             <button type="button" class="text-lg text-gray-600 sidebar-toggle">
                 <i class="ri-menu-line"></i>
             </button>
-            <ul class="flex items-center text-sm ml-4">
+            <!-- <ul class="flex items-center text-sm ml-4">
                 <li class="mr-2">
                     <a href="#" class="text-gray-400 hover:text-gray-600 font-medium">Dashboard</a>
                 </li>
                 <li class="text-gray-600 mr-2 font-medium">/</li>
                 <li class="text-gray-600 mr-2 font-medium">Analisis</li>
-            </ul>
+            </ul> -->
             <ul class="ml-auto flex items-center">
                 <li class="dropdown ml-1">
                     <button type="button" class="dropdown-toggle flex items-center">

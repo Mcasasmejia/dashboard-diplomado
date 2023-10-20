@@ -2,6 +2,7 @@
 <script setup>
 import { Modal } from 'flowbite-vue'
 import { ref } from 'vue'
+import BreadCrumb from '../components/BreadCrumb.vue';
 
 // Modal Crear Hotel
 const isShowModal = ref(false)
@@ -43,6 +44,7 @@ function showModalEliminarHotel() {
 
 <template>
     <div>
+        <BreadCrumb modulo="Hoteles" />
         <div class="p-6">
             <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
                 <div class="flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4">

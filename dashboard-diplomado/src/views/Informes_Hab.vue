@@ -1,5 +1,6 @@
 <script>
 import { Bar } from 'vue-chartjs'
+import BreadCrumb from '../components/BreadCrumb.vue';
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
@@ -39,8 +40,13 @@ export default {
 }
 </script>
 
+<script setup>
+import BreadCrumb from '../components/BreadCrumb.vue';
+</script>
+
 <template>
     <div>
+    <BreadCrumb modulo="Habitaciones"/>
     <div class="p-6">
     <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
         <div class="flex justify-between mb-4">
