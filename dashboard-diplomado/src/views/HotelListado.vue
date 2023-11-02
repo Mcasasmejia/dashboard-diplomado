@@ -19,6 +19,7 @@ export default {
         /// [hoteles] para almacenar la info de los hoteles
         const hoteles = ref([]);
         const ciudades = ref([]);
+        let hotelIdToDelete;
 
         /// [onMounted] se realiza la peticion http
         onMounted(async () => {
@@ -70,7 +71,6 @@ export default {
                 ciudades.value = response.data;
             } catch (error) {
                 console.error('Hubo un error al obtener los hoteles:', error);
-
             }
         }
         ///--------------------------obtener hoteles---------------------
@@ -83,6 +83,26 @@ export default {
 
             }
         }
+
+
+        ///--------------------------elimiar hotel---------------------
+        const eliminarHotel = async () => {
+            // Aquí puedes realizar la solicitud DELETE al servidor para eliminar el hotel con el ID proporcionado
+            // Ejemplo con axios:
+            // Manejar cualquier error que ocurra durante la eliminación
+
+
+            try {
+                await axios.delete(`http://146.190.32.176/diplomado/api/hotels/${hotelIdToDelete}`);
+
+                closeModalEliminarHotel()
+                await getHoteles();
+            } catch (error) {
+                console.error('Hubo un error al elimiar el hotel:', error);
+
+            }
+        }
+
         ///----------------eventos-------------------------
 
         /// evento para abrir o cerrar el modal de ver hotel
@@ -99,7 +119,11 @@ export default {
         // evento pra abir o cerrar el modal de Eliminar Hotel
         const isShowModalEliminarHotel = ref(false);
         const closeModalEliminarHotel = () => isShowModalEliminarHotel.value = false;
-        const showModalEliminarHotel = () => isShowModalEliminarHotel.value = true;
+        const showModalEliminarHotel = (id) => {
+            isShowModalEliminarHotel.value = true; // Muestra el modal de eliminación
+            hotelIdToDelete = id; // Almacena el ID del hotel a eliminar
+            console.log(hotelIdToDelete, '-----');
+        };
 
 
         // evento pra abir o cerrar el modal de Crear Hotel
@@ -125,7 +149,9 @@ export default {
             showModal,
             hoteles,
             ciudades,
-            executePostRequest
+
+            executePostRequest,
+            eliminarHotel,
         };
     }
 };
@@ -228,7 +254,7 @@ function showModal() {
                                 </td>
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{
                                     hotel.address }}
-                                    #15-66</td>
+                                </td>
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{
                                     hotel.num_rooms }}</td>
                                 <td class="px-4 py-3">
@@ -256,7 +282,7 @@ function showModal() {
                                         </button>
                                         <button type="button"
                                             class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2.5 py-1 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
-                                            @click="showModalEliminarHotel">
+                                            @click="showModalEliminarHotel(hotel.id)">
                                             <i class="ri-delete-bin-fill mr-2 text-lg"></i>
                                             Eliminar
                                         </button>
@@ -566,7 +592,7 @@ function showModal() {
                     </svg>
                     <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">¿Estas seguro de eliminar este
                         Hotel?</h3>
-                    <button @click="closeModalEliminarHotel" data-modal-hide="popup-modal" type="button"
+                    <button @click="eliminarHotel()" data-modal-hide="popup-modal" type="button"
                         class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                         Si, estoy seguro
                     </button>
