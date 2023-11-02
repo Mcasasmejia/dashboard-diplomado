@@ -87,9 +87,6 @@ export default {
 
         ///--------------------------elimiar hotel---------------------
         const eliminarHotel = async () => {
-            // Aquí puedes realizar la solicitud DELETE al servidor para eliminar el hotel con el ID proporcionado
-            // Ejemplo con axios:
-            // Manejar cualquier error que ocurra durante la eliminación
 
 
             try {
