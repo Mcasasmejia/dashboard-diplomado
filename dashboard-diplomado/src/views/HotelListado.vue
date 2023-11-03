@@ -19,6 +19,7 @@ export default {
         /// [hoteles] para almacenar la info de los hoteles
         const hoteles = ref([]);
         const ciudades = ref([]);
+        const selectedHotel = ref({});
         let hotelIdToDelete;
 
         /// [onMounted] se realiza la peticion http
@@ -84,6 +85,19 @@ export default {
             }
         }
 
+        ///--------------------------Editar hoteles---------------------
+
+
+        const updateHotel = async () => {
+            try {
+                // Envía una solicitud PUT para actualizar la información del hotel utilizando axios
+                await axios.put(`http://146.190.32.176/diplomado/api/hotels/${selectedHotel.value.id}`, selectedHotel.value);
+                closeModalEditarHotel(); // Cierra el modal de edición
+                await getHoteles(); // Actualiza la lista de hoteles
+            } catch (error) {
+                console.error('Error al actualizar el hotel:', error);
+            }
+        };
 
         ///--------------------------elimiar hotel---------------------
         const eliminarHotel = async () => {
@@ -110,7 +124,10 @@ export default {
         /// evento pra abir o cerrar el modal de editar hoteñ
         const isShowModalEditarHotel = ref(false);
         const closeModalEditarHotel = () => isShowModalEditarHotel.value = false;
-        const showModalEditarHotel = () => isShowModalEditarHotel.value = true;
+        const showModalEditarHotel = (hotel) => {
+            selectedHotel.value = { ...hotel }; // Copia la información del hotel seleccionado para la edición
+            isShowModalEditarHotel.value = true; // Muestra el modal de edición
+        };
 
 
         // evento pra abir o cerrar el modal de Eliminar Hotel
@@ -146,9 +163,13 @@ export default {
             showModal,
             hoteles,
             ciudades,
+            
 
             executePostRequest,
             eliminarHotel,
+
+            selectedHotel,
+            updateHotel,
         };
     }
 };
@@ -267,7 +288,7 @@ function showModal() {
                                     <div class="flex items-center space-x-4">
                                         <button type="button"
                                             class="flex items-center py-1 px-2.5 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                                            @click="showModalEditarHotel">
+                                            @click="showModalEditarHotel(hotel)">
                                             <i class="ri-edit-box-line mr-2 text-lg"></i>
                                             Editar
                                         </button>
@@ -516,7 +537,7 @@ function showModal() {
                         <div class="sm:col-span-3">
                             <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">NIT</label>
                             <div class="mt-2">
-                                <input type="text" name="first-name" id="first-name" autocomplete="given-name"
+                                <input v-model="selectedHotel.nit" type="text" name="first-name" id="first-name" autocomplete="given-name"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
@@ -524,7 +545,7 @@ function showModal() {
                         <div class="sm:col-span-3">
                             <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Nombre</label>
                             <div class="mt-2">
-                                <input type="text" name="last-name" id="last-name" autocomplete="family-name"
+                                <input v-model="selectedHotel.name" type="text" name="last-name" id="last-name" autocomplete="family-name"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
@@ -532,13 +553,12 @@ function showModal() {
                         <div class="sm:col-span-3">
                             <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Ciudad</label>
                             <div class="mt-2">
-                                <select id="country" name="country" autocomplete="country-name"
+                                <select v-model="selectedHotel.city_id" id="country" name="country" autocomplete="country-name"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                    <option>Montería</option>
-                                    <option>Bogotá</option>
-                                    <option>Medellin</option>
-                                    <option>Cartagena</option>
-                                    <option>Barranquilla</option>
+                                    <option>Seleccionar</option>
+                                    <option v-for="ciudad in ciudades" :key="ciudad.id" :value="ciudad.id" >{{ ciudad.name }}
+                                    </option>
+
                                 </select>
                             </div>
                         </div>
@@ -547,7 +567,7 @@ function showModal() {
                             <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Max
                                 Habitaciones</label>
                             <div class="mt-2">
-                                <input type="number" id="tentacles" name="tentacles" value="1" min="1" max="20"
+                                <input v-model="selectedHotel.num_rooms" type="number" id="tentacles" name="tentacles"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                             </div>
                         </div>
@@ -556,7 +576,7 @@ function showModal() {
                             <label for="street-address"
                                 class="block text-sm font-medium leading-6 text-gray-900">Dirección</label>
                             <div class="mt-2">
-                                <input type="text" name="street-address" id="street-address" autocomplete="street-address"
+                                <input v-model="selectedHotel.address" type="text" name="street-address" id="street-address" autocomplete="street-address"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
