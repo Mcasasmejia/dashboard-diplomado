@@ -1,7 +1,39 @@
-<script setup>
+<script>
 import { Modal } from 'flowbite-vue'
 import { ref } from 'vue'
+import BreadCrumb from '../components/BreadCrumb.vue';
+import axios from 'axios';
 
+export default {
+
+components: {
+    BreadCrumb,
+    Modal
+},
+setup() {
+
+    // evento pra abir o cerrar el modal de Crear Hotel
+    const isShowModal = ref(false);
+    const closeModal = () => isShowModal.value = false;
+    const showModal = () => isShowModal.value = true;
+
+    return {
+        isShowModal,
+        closeModal,
+        showModal,
+
+        isShowModalEditarHabitacion,
+        closeModalEditarHabitacion,
+        ShowModalEditarHabitacion,
+
+        isShowModalEliminarHabitacion,
+        ShowModalEliminarHabitacion,
+        closeModalEliminarHabitacion,
+
+
+    };
+}
+};
 // Modal Agregar Habitación
 const isShowModal = ref(false)
 function closeModal() {
@@ -31,7 +63,8 @@ function ShowModalEliminarHabitacion() {
 
 <template>
     <div>
- <!-- card del enunciado principañ -->
+ <!-- card del enunciado principal -->
+ <BreadCrumb modulo="Habitaciones" />
  <div class="p-6">
             <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
                 <div class="flex justify-between mb-6">
@@ -558,6 +591,7 @@ function ShowModalEliminarHabitacion() {
                     <div class="mt-2">
                         <select id="country" name="country" autocomplete="country-name"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                            <option>Seleccionar</option>
                             <option>Estándar</option>
                             <option>Junior</option>
                             <option>Suite</option>
@@ -571,6 +605,7 @@ function ShowModalEliminarHabitacion() {
                     <div class="mt-2">
                         <select id="acomodacion" name="acomodacion" autocomplete="acomodacion-name"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                        <option>Seleccionar</option>
                         <option>Sencilla</option>
                         <option>Doble</option>
                         <option>Triple</option>
@@ -622,6 +657,7 @@ function ShowModalEliminarHabitacion() {
                     <div class="mt-2">
                         <select id="country" name="country" autocomplete="country-name"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                            <option>Seleccionar</option>
                             <option>Estándar</option>
                             <option>Junior</option>
                             <option>Suite</option>
@@ -635,6 +671,7 @@ function ShowModalEliminarHabitacion() {
                     <div class="mt-2">
                         <select id="acomodacion" name="acomodacion" autocomplete="acomodacion-name"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                        <option>Seleccionar</option>
                         <option>Sencilla</option>
                         <option>Doble</option>
                         <option>Triple</option>
