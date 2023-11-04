@@ -1,6 +1,6 @@
 <script>
 import { Modal } from 'flowbite-vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import BreadCrumb from '../components/BreadCrumb.vue';
 import axios from 'axios';
 
@@ -11,6 +11,71 @@ components: {
     Modal
 },
 setup() {
+
+    ///----------------eventos-------------------------
+    const hoteles = ref([]);
+    const rooms = ref([]); // Aquí almacenaremos las habitaciones
+    const rooms_types = ref([]); // Aquí almacenaremos los tipos
+    const acommodations = ref([]); // Aquí almacenaremos las acomodaciones
+
+    /// [onMounted] se realiza la peticion http
+    onMounted(async () => {
+        await getHoteles();
+        await getRooms();
+        await getRooms_types();
+        await getAcommodations();
+    });
+        
+        ///--------------------------obtener hoteles---------------------
+        const getHoteles = async () => {
+            try {
+                const response = await axios.get('http://146.190.32.176/diplomado/api/hotels');
+                hoteles.value = response.data["data"];
+            } catch (error) {
+                console.error('Hubo un error al obtener los hoteles:', error);
+
+            }
+        }
+
+        ///--------------------------obtener Habitaciones---------------------
+        const getRooms = async () => {
+            try {
+                const response = await axios.get('http://146.190.32.176/diplomado/api/rooms');
+                rooms.value = response.data["data"];
+            } catch (error) {
+                console.error('Hubo un error al obtener las habitaciones:', error);
+            }
+        }
+
+        // Función para mostrar la información de las habitaciones en la consola
+        const mostrarInformacionHabitaciones = () => {
+        console.log('rooms:', rooms.value);
+        console.log('acomodaciones:', acommodations.value);
+        console.log('types:', rooms_types.value);
+        console.log('hoteles:', hoteles.value);
+        
+        };
+
+        ///--------------------------obtener tipos---------------------
+        const getRooms_types = async () => {
+            try {
+                const response = await axios.get('http://146.190.32.176/diplomado/api/room-types');
+                rooms_types.value = response.data;
+            } catch (error) {
+                console.error('Hubo un error al obtener los hoteles:', error);
+            }
+        }
+
+        ///--------------------------obtener acomodaciones---------------------
+        const getAcommodations = async () => {
+            try {
+                const response = await axios.get('http://146.190.32.176/diplomado/api/accommodation-types');
+                acommodations.value = response.data;
+            } catch (error) {
+                console.error('Hubo un error al obtener los hoteles:', error);
+            }
+        }
+        
 
     // evento pra abir o cerrar el modal de Crear Hotel
     const isShowModal = ref(false);
@@ -30,6 +95,12 @@ setup() {
         ShowModalEliminarHabitacion,
         closeModalEliminarHabitacion,
 
+        rooms,
+        hoteles,
+        rooms_types,
+        acommodations,
+
+        mostrarInformacionHabitaciones,
 
     };
 }
@@ -73,22 +144,27 @@ function ShowModalEliminarHabitacion() {
                         <p class="mt-1 text-sm leading-6 text-gray-600">Puede disfrutar la información compartida de las habitaciones, actualmente solo estan disponibles estas habitaciones.</p>
                     </div>
                     <div class="mt-2">
+                        <button @click="mostrarInformacionHabitaciones" type="submit" class="block w-full rounded-md bg-primary-700 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600">
+                            <i class="ri-add-line mr-1.5"></i>
+                            Prueba de Datos
+                        </button>
                         <button @click="showModal" type="submit" class="block w-full rounded-md bg-primary-700 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600">
                             <i class="ri-add-line mr-1.5"></i>
                             Agregar Habitación
                         </button>
                     </div>
                 </div>
-                            <!-- lista de los hoteles -->
+            
+            <!-- lista de habitaciones -->
             <div class="flex flex-wrap -mx-4">
                 <!-- Card 1 -->
-
-                <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
+                <div v-for="room in rooms" :key="room.id" :value="room.id" class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
                     <div class="bg-white rounded-lg shadow-md">
                         <img src="../assets/suite.jpeg" alt="Imagen 3" class="w-full h-48 object-cover rounded-t-lg">
                         <div class="p-4">
                             <h2 class="text-xl font-semibold">Habitacion 01</h2>
-                            <p class="text-gray-600">Descripción: Estandar-sencilla.</p>
+                            <p class="text-gray-600">Tipo: {{ room.id }}</p>
+                            <p class="text-gray-600">Acomodación: Sencilla</p>
                             <div class="flex justify-between mt-4">
                                 <!-- Opción Editar -->
                                 <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
@@ -118,296 +194,13 @@ function ShowModalEliminarHabitacion() {
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
-                    <div class="bg-white rounded-lg shadow-md">
-                        <img src="../assets/suite.jpeg" alt="Imagen 3" class="w-full h-48 object-cover rounded-t-lg">
-                        <div class="p-4">
-                            <h2 class="text-xl font-semibold">Habitacion 02</h2>
-                            <p class="text-gray-600">Descripción: Sencilla-doble</p>
-                            <div class="flex justify-between mt-4">
-                                <!-- Opción Editar -->
-                                <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    @click="ShowModalEditarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path
-                                            d="M14.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-12 12a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414l12-12a1 1 0 011.414 0zM16 4.414L15.414 4l-1 1L16 6.414l.586-.586z" />
-                                        <path d="M4 14h4v2H4z" />
-                                        <path d="M10 4h2V2h-2z" />
-                                    </svg>
-                                    Editar
-                                </button>
-                                <!-- Opción Eliminar -->
-                                <button class="flex items-center text-red-500 hover:text-red-700"
-                                    @click="ShowModalEliminarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 5.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414L11.414 10l3.293 3.293a1 1 0 01-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 010-1.414z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    Eliminar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Card 3 -->
-                <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
-                    <div class="bg-white rounded-lg shadow-md">
-                        <img src="../assets/suite.jpeg" alt="Imagen 3" class="w-full h-48 object-cover rounded-t-lg">
-                        <div class="p-4">
-                            <h2 class="text-xl font-semibold"> Habitacion 03</h2>
-                            <p class="text-gray-600">Descripción: Suite-doble.
 
-                            </p>
-                            <div class="flex justify-between mt-4">
-                                <!-- Opción Editar -->
-                                <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    @click="ShowModalEditarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path
-                                            d="M14.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-12 12a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414l12-12a1 1 0 011.414 0zM16 4.414L15.414 4l-1 1L16 6.414l.586-.586z" />
-                                        <path d="M4 14h4v2H4z" />
-                                        <path d="M10 4h2V2h-2z" />
-                                    </svg>
-                                    Editar
-                                </button>
-                                <!-- Opción Eliminar -->
-                                <button class="flex items-center text-red-500 hover:text-red-700"
-                                    @click="ShowModalEliminarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 5.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414L11.414 10l3.293 3.293a1 1 0 01-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 010-1.414z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    Eliminar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- card 4 -->
 
-                <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
-                    <div class="bg-white rounded-lg shadow-md">
-                        <img src="../assets/suite.jpeg" alt="Imagen 3" class="w-full h-48 object-cover rounded-t-lg">
-                        <div class="p-4">
-                            <h2 class="text-xl font-semibold">Habitacion 04</h2>
-                            <p class="text-gray-600">Descripción: Junior-cuadruple.</p>
-                            <div class="flex justify-between mt-4">
-                                <!-- Opción Editar -->
-                                <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    @click="ShowModalEditarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path
-                                            d="M14.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-12 12a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414l12-12a1 1 0 011.414 0zM16 4.414L15.414 4l-1 1L16 6.414l.586-.586z" />
-                                        <path d="M4 14h4v2H4z" />
-                                        <path d="M10 4h2V2h-2z" />
-                                    </svg>
-                                    Editar
-                                </button>
-                                <!-- Opción Eliminar -->
-                                <button class="flex items-center text-red-500 hover:text-red-700"
-                                    @click="ShowModalEliminarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 5.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414L11.414 10l3.293 3.293a1 1 0 01-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 010-1.414z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    Eliminar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- card 5 -->
-                <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
-                    <div class="bg-white rounded-lg shadow-md">
-                        <img src="../assets/suite.jpeg" alt="Imagen 3" class="w-full h-48 object-cover rounded-t-lg">
-                        <div class="p-4">
-                            <h2 class="text-xl font-semibold">Habitacion 05</h2>
-                            <p class="text-gray-600">Descripción: Suite- triple.</p>
-                            <div class="flex justify-between mt-4">
-                                <!-- Opción Editar -->
-                                <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    @click="ShowModalEditarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path
-                                            d="M14.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-12 12a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414l12-12a1 1 0 011.414 0zM16 4.414L15.414 4l-1 1L16 6.414l.586-.586z" />
-                                        <path d="M4 14h4v2H4z" />
-                                        <path d="M10 4h2V2h-2z" />
-                                    </svg>
-                                    Editar
-                                </button>
-                                <!-- Opción Eliminar -->
-                                <button class="flex items-center text-red-500 hover:text-red-700"
-                                    @click="ShowModalEliminarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 5.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414L11.414 10l3.293 3.293a1 1 0 01-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 010-1.414z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    Eliminar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            
 
-                <!-- Card 6 -->
 
-                <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
-                    <div class="bg-white rounded-lg shadow-md">
-                        <img src="../assets/suite.jpeg" alt="Imagen 3" class="w-full h-48 object-cover rounded-t-lg">
-                        <div class="p-4">
-                            <h2 class="text-xl font-semibold">Habitacion 06</h2>
-                            <p class="text-gray-600">Descripción: Estandar-triple.</p>
-                            <div class="flex justify-between mt-4">
-                                <!-- Opción Editar -->
-                                <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    @click="ShowModalEditarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path
-                                            d="M14.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-12 12a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414l12-12a1 1 0 011.414 0zM16 4.414L15.414 4l-1 1L16 6.414l.586-.586z" />
-                                        <path d="M4 14h4v2H4z" />
-                                        <path d="M10 4h2V2h-2z" />
-                                    </svg>
-                                    Editar
-                                </button>
-                                <!-- Opción Eliminar -->
-                                <button class="flex items-center text-red-500 hover:text-red-700"
-                                    @click="ShowModalEliminarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 5.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414L11.414 10l3.293 3.293a1 1 0 01-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 010-1.414z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    Eliminar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- card 7 -->
-                <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
-                    <div class="bg-white rounded-lg shadow-md">
-                        <img src="../assets/suite.jpeg" alt="Imagen 3" class="w-full h-48 object-cover rounded-t-lg">
-                        <div class="p-4">
-                            <h2 class="text-xl font-semibold">Habitacion 07</h2>
-                            <p class="text-gray-600">Descripción: Sencilla-doble.</p>
-                            <div class="flex justify-between mt-4">
-                                <!-- Opción Editar -->
-                                <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    @click="ShowModalEditarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path
-                                            d="M14.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-12 12a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414l12-12a1 1 0 011.414 0zM16 4.414L15.414 4l-1 1L16 6.414l.586-.586z" />
-                                        <path d="M4 14h4v2H4z" />
-                                        <path d="M10 4h2V2h-2z" />
-                                    </svg>
-                                    Editar
-                                </button>
-                                <!-- Opción Eliminar -->
-                                <button class="flex items-center text-red-500 hover:text-red-700"
-                                    @click="ShowModalEliminarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 5.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414L11.414 10l3.293 3.293a1 1 0 01-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 010-1.414z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    Eliminar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- card 8 -->
-
-                <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
-                    <div class="bg-white rounded-lg shadow-md">
-                        <img src="../assets/suite.jpeg" alt="Imagen 3" class="w-full h-48 object-cover rounded-t-lg">
-                        <div class="p-4">
-                            <h2 class="text-xl font-semibold">Habitacion 08</h2>
-                            <p class="text-gray-600">Descripción: Estandar-cuadruple.</p>
-                            <div class="flex justify-between mt-4">
-                                <!-- Opción Editar -->
-                                <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    @click="ShowModalEditarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path
-                                            d="M14.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-12 12a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414l12-12a1 1 0 011.414 0zM16 4.414L15.414 4l-1 1L16 6.414l.586-.586z" />
-                                        <path d="M4 14h4v2H4z" />
-                                        <path d="M10 4h2V2h-2z" />
-                                    </svg>
-                                    Editar
-                                </button>
-                                <!-- Opción Eliminar -->
-                                <button class="flex items-center text-red-500 hover:text-red-700"
-                                    @click="ShowModalEliminarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 5.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414L11.414 10l3.293 3.293a1 1 0 01-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 010-1.414z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    Eliminar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 9 -->
-                <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
-                    <div class="bg-white rounded-lg shadow-md">
-                        <img src="../assets/suite.jpeg" alt="Imagen 3" class="w-full h-48 object-cover rounded-t-lg">
-                        <div class="p-4">
-                            <h2 class="text-xl font-semibold">Habitacion 09</h2>
-                            <p class="text-gray-600">Descripción: Estandar-sencilla.</p>
-                            <div class="flex justify-between mt-4">
-                                <!-- Opción Editar -->
-                                <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
-                                    @click="ShowModalEditarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path
-                                            d="M14.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-12 12a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414l12-12a1 1 0 011.414 0zM16 4.414L15.414 4l-1 1L16 6.414l.586-.586z" />
-                                        <path d="M4 14h4v2H4z" />
-                                        <path d="M10 4h2V2h-2z" />
-                                    </svg>
-                                    Editar
-                                </button>
-                                <!-- Opción Eliminar -->
-                                <button class="flex items-center text-red-500 hover:text-red-700"
-                                    @click="ShowModalEliminarHabitacion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 5.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414L11.414 10l3.293 3.293a1 1 0 01-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 010-1.414z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    Eliminar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             </div>
         </div>
@@ -592,9 +385,7 @@ function ShowModalEliminarHabitacion() {
                         <select id="country" name="country" autocomplete="country-name"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                             <option>Seleccionar</option>
-                            <option>Estándar</option>
-                            <option>Junior</option>
-                            <option>Suite</option>
+                            <option v-for="rooms_t in rooms_types" :key="rooms_t.id" :value="rooms_t.id">{{ rooms_t.name }}</option>
                         </select>
                     </div>
                 </div>
@@ -606,10 +397,7 @@ function ShowModalEliminarHabitacion() {
                         <select id="acomodacion" name="acomodacion" autocomplete="acomodacion-name"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                         <option>Seleccionar</option>
-                        <option>Sencilla</option>
-                        <option>Doble</option>
-                        <option>Triple</option>
-                        <option>Cuádruple</option>
+                        <option v-for="rooms_a in acommodations" :key="rooms_a.id" :value="rooms_a.id">{{ rooms_a.name }}</option>
                         </select>
                     </div>
                 </div>

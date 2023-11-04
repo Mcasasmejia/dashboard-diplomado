@@ -71,7 +71,7 @@ export default {
                 const response = await axios.get('http://146.190.32.176/diplomado/api/cities');
                 ciudades.value = response.data;
             } catch (error) {
-                console.error('Hubo un error al obtener los hoteles:', error);
+                console.error('Hubo un error al obtener las ciudades:', error);
             }
         }
         ///--------------------------obtener hoteles---------------------
@@ -121,7 +121,7 @@ export default {
         const closeModalVerHotel = () => isShowModalVerHotel.value = false;
         const showModalVerHotel = () => isShowModalVerHotel.value = true;
 
-        /// evento pra abir o cerrar el modal de editar hoteñ
+        /// evento para abir o cerrar el modal de editar hotel
         const isShowModalEditarHotel = ref(false);
         const closeModalEditarHotel = () => isShowModalEditarHotel.value = false;
         const showModalEditarHotel = (hotel) => {
