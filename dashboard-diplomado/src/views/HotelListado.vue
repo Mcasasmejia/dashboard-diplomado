@@ -59,6 +59,8 @@ export default {
                 console.error('Hubo un error al realizar la solicitud POST:', error);
             }
         };
+
+        
         const executePostRequest = async () => {
             await postNewHotel(); // Ejecuta el método postNewHotel al hacer clic en el botón
             closeModal();
@@ -280,7 +282,7 @@ function showModal() {
                                         <router-link to="/habitaciones"
                                             class="py-1 px-2.5 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-green-600 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                                             <i class="ri-hotel-bed-fill mr-2 text-lg"></i>
-                                            Ver
+                                            Ver habitaciones
                                         </router-link>
                                     </div>
                                 </td>
