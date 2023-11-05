@@ -18,6 +18,7 @@ setup() {
     const rooms_types = ref([]); // Aquí almacenaremos los tipos
     const acommodations = ref([]); // Aquí almacenaremos las acomodaciones
 
+
     /// [onMounted] se realiza la peticion http
     onMounted(async () => {
         await getHoteles();
@@ -40,24 +41,14 @@ setup() {
         ///--------------------------obtener Habitaciones---------------------
         const getRooms = async () => {
             try {
-                const response = await axios.get('http://146.190.32.176/diplomado/api/rooms');
+                const hotelId = 235; //nuevaHabitacion.hotel_id; // Obtén el hotel_id
+                const response = await axios.get(`http://146.190.32.176/diplomado/api/rooms/${hotelId}`);
                 rooms.value = response.data["data"];
             } catch (error) {
                 console.error('Hubo un error al obtener las habitaciones:', error);
             }
         }
 
-        // Realizar la petición para obtener las habitaciones del hotel seleccionado
-        const getHabitacionesByHotel = async () => {
-        if (hotelId.value) {
-            try {
-            const response = await axios.get(`http://146.190.32.176/diplomado/api/rooms?hotel_id=${hotelId.value}`);
-            rooms.value = response.data["data"];
-            } catch (error) {
-            console.error('Hubo un error al obtener las habitaciones:', error);
-            }
-        }
-        };
 
         // Función para mostrar la información de las habitaciones en la consola
         const mostrarInformacionHabitaciones = () => {
@@ -88,45 +79,30 @@ setup() {
             }
         }
         
-
+    const nuevaHabitacion = ref({
+      hotel_id: '',
+      room_type_id: '',
+      accommodation_id: '',
+      quantity: ''
+    });
 
     // Función para crear una nueva habitación
     const crearHabitacion = async () => {
       try {
-        
-        /// valores de los campos del formulario
-        const hotel_id = document.getElementById('hotel-id').value;
-        const room_type_id = document.getElementById('room_type_id').value;
-        const accommodation_id = document.getElementById('accommodation_id').value;
-        const quantity = document.getElementById('quantity').value;
-
-        console.log('Valores del formulario:');
-        console.log('Id Hotel:', hotel_id);
-        console.log('Tipo:', room_type_id);
-        console.log('Acomm:', accommodation_id);
-        console.log('Cantidad:', quantity);
-
-        // Datos de la nueva habitación
-        const nuevaHabitacion = ref({
-            "hotel_id": hotel_id,
-            "room_type_id": room_type_id,
-            "accommodation_id": accommodation_id,
-            "quantity": quantity,
-        });
-
-        const response = await axios.post('http://146.190.32.176/diplomado/api/rooms', nuevaHabitacion.value);
-        console.log('Habitación creada:', response.data);
-        // Puedes realizar otras acciones después de crear la habitación si es necesario.
+        // const hotelId = nuevaHabitacion.hotel_id; // Obtén el hotel_id
+        const response = await axios.post(`http://146.190.32.176/diplomado/api/rooms`, nuevaHabitacion);
+        console.log(response.data, 'POST Request');
       } catch (error) {
-        console.error('Error al crear la habitación:', error);
+        console.error('Error al crear la habitación', error);
       }
     };
 
-        const executePostRequest = async () => {
-            await crearHabitacion(); // Ejecuta el método postHabitacion al hacer clic en el botón
-            closeModal();
-            await getRooms();
-        };
+    const executePostRequest = async () => {
+        await crearHabitacion(); // Ejecuta el método postHabitacion al hacer clic en el botón
+        closeModal();
+        // await getRooms();
+    };
+
 
     // evento pra abir o cerrar el modal de Crear Hotel
     const isShowModal = ref(false);
@@ -154,8 +130,7 @@ setup() {
         mostrarInformacionHabitaciones,
 
         crearHabitacion,
-
-        getHabitacionesByHotel,
+        nuevaHabitacion,
 
         executePostRequest,
 
@@ -220,8 +195,8 @@ function ShowModalEliminarHabitacion() {
                         <img src="../assets/suite.jpeg" alt="Imagen 3" class="w-full h-48 object-cover rounded-t-lg">
                         <div class="p-4">
                             <h2 class="text-xl font-semibold">Habitacion 01</h2>
-                            <p class="text-gray-600">Tipo: {{ room.id }}</p>
-                            <p class="text-gray-600">Acomodación: Sencilla</p>
+                            <p class="text-gray-600">Tipo: {{ room.room_type_id }}</p>
+                            <p class="text-gray-600">Acomodación: {{ room.accommodation_id }}</p>
                             <div class="flex justify-between mt-4">
                                 <!-- Opción Editar -->
                                 <button class="flex items-center text-blue-500 hover:text-blue-700" id="btnEditar"
@@ -272,14 +247,14 @@ function ShowModalEliminarHabitacion() {
             </div>
         </template>
         <template #body>
-        <form @submit="crearHabitacion">
+        <form>
             <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
                 <div class="sm:col-span-3">
-                    <label for="hotel-id"
+                    <label for="hotel_id"
                     class="block text-sm font-medium leading-6 text-gray-900">Codigo Habitación</label>
                     <div class="mt-2">
-                        <input type="text" name="first-name" id="first-name"
+                    <input type="number" name="hotel_id" id="hotel_id"
                     autocomplete="given-name"
                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
@@ -290,8 +265,8 @@ function ShowModalEliminarHabitacion() {
                     <label for="quantity"
                     class="block text-sm font-medium leading-6 text-gray-900">Cantidad</label>
                     <div class="mt-2">
-                        <input type="number" id="tentacles" name="tentacles" value="1" min="1" max="20"
-                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                        <input type="number" v-model="nuevaHabitacion.quantity" id="quantity" name="quantity"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                         </div>
                 </div>
 
@@ -300,7 +275,7 @@ function ShowModalEliminarHabitacion() {
                     <label for="room_type_id"
                     class="block text-sm font-medium leading-6 text-gray-900">Tipo</label>
                     <div class="mt-2">
-                        <select id="country" name="country" autocomplete="country-name"
+                        <select v-model="nuevaHabitacion.room_type_id" id="room_type_id" name="room_type_id" autocomplete="room_type_id"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                             <option>Seleccionar</option>
                             <option v-for="rooms_t in rooms_types" :key="rooms_t.id" :value="rooms_t.id">{{ rooms_t.name }}</option>
@@ -312,7 +287,7 @@ function ShowModalEliminarHabitacion() {
                     <label for="accommodation_id"
                     class="block text-sm font-medium leading-6 text-gray-900">Acomodación</label>
                     <div class="mt-2">
-                        <select id="acomodacion" name="acomodacion" autocomplete="acomodacion-name"
+                        <select v-model="nuevaHabitacion.accommodation_id" id="accommodation_id" name="accommodation_id" autocomplete="accommodation_id"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                         <option>Seleccionar</option>
                         <option v-for="rooms_a in acommodations" :key="rooms_a.id" :value="rooms_a.id">{{ rooms_a.name }}</option>
