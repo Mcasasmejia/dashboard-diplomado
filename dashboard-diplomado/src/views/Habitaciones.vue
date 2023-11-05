@@ -98,9 +98,10 @@ setup() {
     };
 
     const executePostRequest = async () => {
+        console.log('nuevaHabitacion:', nuevaHabitacion.value); // Agrega esta línea para verificar los datos
         await crearHabitacion(); // Ejecuta el método postHabitacion al hacer clic en el botón
         closeModal();
-        // await getRooms();
+        await getRooms();
     };
 
 
@@ -265,7 +266,7 @@ function ShowModalEliminarHabitacion() {
                     <label for="quantity"
                     class="block text-sm font-medium leading-6 text-gray-900">Cantidad</label>
                     <div class="mt-2">
-                        <input type="number" v-model="nuevaHabitacion.quantity" id="quantity" name="quantity"
+                        <input type="number" id="quantity" name="quantity"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                         </div>
                 </div>
@@ -275,7 +276,7 @@ function ShowModalEliminarHabitacion() {
                     <label for="room_type_id"
                     class="block text-sm font-medium leading-6 text-gray-900">Tipo</label>
                     <div class="mt-2">
-                        <select v-model="nuevaHabitacion.room_type_id" id="room_type_id" name="room_type_id" autocomplete="room_type_id"
+                        <select id="room_type_id" name="room_type_id" autocomplete="room_type_id"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                             <option>Seleccionar</option>
                             <option v-for="rooms_t in rooms_types" :key="rooms_t.id" :value="rooms_t.id">{{ rooms_t.name }}</option>
@@ -287,7 +288,7 @@ function ShowModalEliminarHabitacion() {
                     <label for="accommodation_id"
                     class="block text-sm font-medium leading-6 text-gray-900">Acomodación</label>
                     <div class="mt-2">
-                        <select v-model="nuevaHabitacion.accommodation_id" id="accommodation_id" name="accommodation_id" autocomplete="accommodation_id"
+                        <select id="accommodation_id" name="accommodation_id" autocomplete="accommodation_id"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                         <option>Seleccionar</option>
                         <option v-for="rooms_a in acommodations" :key="rooms_a.id" :value="rooms_a.id">{{ rooms_a.name }}</option>
